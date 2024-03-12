@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://dxogww7g5xva3"]
+
+[ext_resource type="PackedScene" uid="uid://dmghuesqv2edn" path="res://3DGodotRobot.glb" id="1_8p04p"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_g31er"]
+radius = 0.443028
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dc6ai"]
+size = Vector3(0.510345, 1, 0.527693)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_r0rc5"]
+size = Vector3(0.297765, 0.603639, 0.267459)
+
+[node name="Enemy1" type="CharacterBody3D"]
+
+[node name="Pivot" type="Node3D" parent="."]
+
+[node name="3DGodotRobot" parent="Pivot" instance=ExtResource("1_8p04p")]
+
+[node name="Head" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.999954, -0.00961662, 0, 0.00961662, 0.999954, 0, 0, 0, 1, 0.0135872, 1.3163, 0.0132186)
+shape = SubResource("SphereShape3D_g31er")
+
+[node name="Body" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.999942, -0.00961651, -0.00478218, 0.00961662, 0.999954, 0, 0.00478196, -4.59884e-05, 0.999989, 0.0135872, 0.49427, 0.0132186)
+shape = SubResource("BoxShape3D_dc6ai")
+
+[node name="Right_Arm" type="CollisionShape3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.619528, 0.890059, 0.00454342)
+shape = SubResource("BoxShape3D_r0rc5")
+
+[node name="Left_Arm" type="CollisionShape3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -0.531209, 0.893735, 0.00908685)
+shape = SubResource("BoxShape3D_r0rc5")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
