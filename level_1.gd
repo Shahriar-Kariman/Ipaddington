@@ -10,8 +10,6 @@ func _ready():
 func _process(delta):
 	pass
 
-
-
 func _on_pickup_caught_pickup():
 	var pickup = pickupTemplate.instantiate()
 	#set position of enemy to randomly on the ground
@@ -22,7 +20,8 @@ func _on_pickup_caught_pickup():
 	
 	pickup.position.x = (randf() * groundSize.x) - groundSize.x/2
 	pickup.position.z = (randf() * groundSize.z) - groundSize.z/2
-	print(pickup.position.x )
+	pickup.caught_Pickup.connect(_on_pickup_caught_pickup)
+	print(pickup.position.x)
 	print(pickup.position.z)
 	add_child(pickup) #adds as a child ourselves
 	

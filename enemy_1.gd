@@ -17,13 +17,13 @@ func _physics_process(delta):
 		velocity.y -= gravity * delta
 
 	if random == 1:
-		velocity.x +=1	
+		velocity.x +=1
 	if random == 2:
-		velocity.y -=1	
+		velocity.y -=1
 	if random == 3:
-		velocity.z +=1	
+		velocity.z +=1
 	if random == 4:
-		velocity.z -=1	
+		velocity.z -=1
 
 	velocity = velocity.normalized()* SPEED
 	position += velocity *delta
