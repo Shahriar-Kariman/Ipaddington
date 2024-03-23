@@ -58,11 +58,11 @@ var followOverhead = 2
 func _ready():
 	pass # Replace with function body.
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	position = Vector3(player.position.x/followOverhead,10,player.position.z/followOverhead)
-	look_at(player.position)
+	if get_rotation_degrees().x != -90:
+		look_at(player.position)
 "
 
 [node name="Level2" type="Node3D"]
