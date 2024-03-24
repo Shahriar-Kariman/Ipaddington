@@ -1,0 +1,27 @@
+[gd_scene load_steps=2 format=3 uid="uid://bx14nlhnferb7"]
+
+[ext_resource type="PackedScene" uid="uid://dmghuesqv2edn" path="res://3DGodotRobot.glb" id="1_8bcs4"]
+
+[node name="3DGodotRobot" instance=ExtResource("1_8bcs4")]
+
+[node name="Skeleton3D" parent="RobotArmature" index="0"]
+bones/0/position = Vector3(4.92675e-11, 0.854357, 0.0298551)
+bones/0/rotation = Quaternion(0.0149092, 1.19196e-07, 1.77731e-09, 0.999889)
+bones/1/rotation = Quaternion(0.0283336, -0.272124, 0.0161484, 0.961709)
+bones/4/position = Vector3(3.86778e-09, 0.151501, -0.011741)
+bones/4/rotation = Quaternion(0.0824671, 0.274761, -0.0139638, 0.957868)
+bones/5/rotation = Quaternion(0.00821238, -4.94291e-14, -1.95798e-09, 0.999966)
+bones/9/rotation = Quaternion(-0.623772, -0.599053, -0.347057, 0.362761)
+bones/10/rotation = Quaternion(-0.0173042, 0.742306, -0.0644846, 0.666726)
+bones/11/rotation = Quaternion(0.51723, -0.0627064, 0.0717498, 0.850525)
+bones/12/rotation = Quaternion(0.0209349, 0.0170217, -0.0176714, 0.99948)
+bones/13/rotation = Quaternion(-0.0304787, 0.00416498, 0.71317, 0.700316)
+bones/14/rotation = Quaternion(-0.181918, -0.71907, 0.210821, 0.636709)
+bones/15/rotation = Quaternion(0.431761, 0.0694089, -0.065288, 0.896941)
+bones/16/rotation = Quaternion(0.0209349, -0.0170217, 0.0176714, 0.99948)
+bones/17/rotation = Quaternion(0.977124, 0.0216832, -0.000196905, -0.21156)
+bones/18/rotation = Quaternion(0.528324, 0.0123911, 0.020505, 0.848705)
+bones/19/rotation = Quaternion(-0.265989, 0.00129857, -0.00570279, 0.963959)
+bones/21/rotation = Quaternion(0.763287, -0.0130705, 0.0172588, 0.645697)
+bones/22/rotation = Quaternion(0.370043, -0.0103607, -0.0233728, 0.928663)
+bones/23/rotation = Quaternion(-0.445062, -0.00233245, 0.00534144, 0.895481)

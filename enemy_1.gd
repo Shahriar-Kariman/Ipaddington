@@ -5,7 +5,7 @@ extends CharacterBody3D
 
 var direction = Vector3.ZERO
 
-var SPEED = 1
+var SPEED = 2.75
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -24,7 +24,8 @@ func _physics_process(delta):
 	nav.target_position = player.position
 	
 	direction = nav.get_next_path_position() - global_position
-	print(direction)
+	look_at(player.position)
+	$Pivot.rotate_y(PI)
 	
 	velocity += direction
 
