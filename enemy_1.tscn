@@ -54,3 +54,5 @@ shape = SubResource("BoxShape3D_r0rc5")
 [node name="Left_Arm" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -0.531209, 0.893735, 0.00908685)
 shape = SubResource("BoxShape3D_r0rc5")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
