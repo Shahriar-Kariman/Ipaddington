@@ -51,7 +51,7 @@ func _process(delta):
 script/source = "extends SpotLight3D
 
 #lower values makes the spotlight follow the player more precisely overhead
-var followOverhead = 2
+var followOverhead = 0.7
 @export var player: CharacterBody3D
 
 # Called when the node enters the scene tree for the first time.
@@ -61,8 +61,8 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	position = Vector3(player.position.x/followOverhead,10,player.position.z/followOverhead)
-	if get_rotation_degrees().x != -90:
-		look_at(player.position)
+	#if get_rotation_degrees().x != -90:
+	look_at(player.position)
 "
 
 [node name="Level2" type="Node3D"]
