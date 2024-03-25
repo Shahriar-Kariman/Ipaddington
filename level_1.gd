@@ -18,7 +18,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
-
+	
 func _on_pickup_caught_pickup():
 	var pickup = pickupTemplate.instantiate()
 	#set position of pickup to randomly on the ground

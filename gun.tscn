@@ -1,7 +1,7 @@
 [gd_scene load_steps=2 format=3 uid="uid://bhcf02xwag1dh"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_jd2in"]
-size = Vector3(1, 0.5, 0.5)
+size = Vector3(0.5, 0.5, 1)
 
 [node name="Gun" type="Node3D"]
 
