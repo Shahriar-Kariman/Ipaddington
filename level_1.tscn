@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bggbrc0a5hlp" path="res://player.tscn" id="1_jw5dv"]
 [ext_resource type="Script" path="res://level_1.gd" id="1_xu0mp"]
-[ext_resource type="PackedScene" path="res://pickup.tscn" id="2_qdsll"]
+[ext_resource type="PackedScene" uid="uid://cyk3rel1yw54v" path="res://pickup.tscn" id="2_qdsll"]
 [ext_resource type="PackedScene" uid="uid://bcyjvl6b4pkne" path="res://enemy_1.tscn" id="4_k81ti"]
 
 [sub_resource type="GDScript" id="GDScript_qqlae"]
@@ -100,6 +100,24 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.5, 4.5, 0)
 shape = SubResource("BoxShape3D_cx1sl")
 
 [node name="CollisionShape3D5" type="CollisionShape3D" parent="WorldBorder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.5, -10.5)
+shape = SubResource("BoxShape3D_hbuke")
+
+[node name="WorldBorder" type="Area3D" parent="WorldBorder"]
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="WorldBorder/WorldBorder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.5, 10.5)
+shape = SubResource("BoxShape3D_hbuke")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="WorldBorder/WorldBorder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 4.5, 0)
+shape = SubResource("BoxShape3D_cx1sl")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="WorldBorder/WorldBorder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.5, 4.5, 0)
+shape = SubResource("BoxShape3D_cx1sl")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="WorldBorder/WorldBorder"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.5, -10.5)
 shape = SubResource("BoxShape3D_hbuke")
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://cg33xde3rccf0"]
+[gd_scene load_steps=4 format=3 uid="uid://cyk3rel1yw54v"]
 
 [ext_resource type="PackedScene" uid="uid://co0jb2s1f4rtd" path="res://HiveTurret.glb" id="1_fhupt"]
 [ext_resource type="Script" path="res://pickup.gd" id="1_tpfbj"]

@@ -8,7 +8,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	rotate_object_local(Vector3.UP, deg_to_rad(90)*delta)
 
 
 func _on_pickup_body_entered(body):
