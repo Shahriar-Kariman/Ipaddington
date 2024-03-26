@@ -4,12 +4,16 @@ extends CharacterBody3D
 var SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 var bulletSpeed = 25
-
+var health = 3
+signal playerHit
+signal playerDead
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 	
 func _physics_process(delta):
-	
+	if health == 0:
+		playerDead.emit()
+		
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 
@@ -48,3 +52,7 @@ func shoot():
 	bullet.position = position
 	bullet.rotation = $pivot.rotation
 
+func _on_area_3d_area_entered(area):
+	if area.name == "Enemy":
+		health -= 1
+		playerHit.emit()

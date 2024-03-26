@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bggbrc0a5hlp" path="res://player.tscn" id="1_jw5dv"]
 [ext_resource type="Script" path="res://level_1.gd" id="1_xu0mp"]
-[ext_resource type="PackedScene" uid="uid://cg33xde3rccf0" path="res://pickup.tscn" id="2_qdsll"]
+[ext_resource type="PackedScene" path="res://pickup.tscn" id="2_qdsll"]
 [ext_resource type="PackedScene" uid="uid://bcyjvl6b4pkne" path="res://enemy_1.tscn" id="4_k81ti"]
 
 [sub_resource type="GDScript" id="GDScript_qqlae"]
