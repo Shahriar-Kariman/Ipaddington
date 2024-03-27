@@ -9,6 +9,8 @@
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_wn4r5"]
 
 [node name="Player" type="CharacterBody3D" groups=["Player"]]
+collision_layer = 4
+collision_mask = 27
 script = ExtResource("1_738oc")
 projectile = ExtResource("2_t5ggj")
 
