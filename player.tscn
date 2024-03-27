@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Player.gd" id="1_738oc"]
 [ext_resource type="PackedScene" uid="uid://bhcf02xwag1dh" path="res://gun.tscn" id="2_66mm8"]
-[ext_resource type="PackedScene" uid="uid://brr5dqw658l70" path="res://projectile.tscn" id="2_yxqvh"]
+[ext_resource type="PackedScene" uid="uid://brr5dqw658l70" path="res://projectile.tscn" id="2_t5ggj"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kikha"]
 
@@ -10,7 +10,7 @@
 
 [node name="Player" type="CharacterBody3D" groups=["Player"]]
 script = ExtResource("1_738oc")
-projectile = ExtResource("2_yxqvh")
+projectile = ExtResource("2_t5ggj")
 
 [node name="pivot" type="Node3D" parent="."]
 
@@ -23,10 +23,12 @@ shape = SubResource("CapsuleShape3D_kikha")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_wn4r5")
 
-[node name="Area3D" type="Area3D" parent="."]
+[node name="Player" type="Area3D" parent="."]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
 shape = SubResource("CapsuleShape3D_kikha")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Player"]
 mesh = SubResource("CapsuleMesh_wn4r5")
+
+[connection signal="area_entered" from="Player" to="." method="_on_area_3d_area_entered"]
