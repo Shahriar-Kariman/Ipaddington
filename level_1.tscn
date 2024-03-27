@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://1u0kf1wkojvd"]
+[gd_scene load_steps=17 format=3 uid="uid://1u0kf1wkojvd"]
 
 [ext_resource type="PackedScene" uid="uid://bggbrc0a5hlp" path="res://player.tscn" id="1_jw5dv"]
 [ext_resource type="Script" path="res://level_1.gd" id="1_xu0mp"]
@@ -43,6 +43,12 @@ metallic = 1.0
 [sub_resource type="BoxShape3D" id="BoxShape3D_wyent"]
 size = Vector3(30, 1, 20)
 
+[sub_resource type="BoxMesh" id="BoxMesh_pn6vn"]
+size = Vector3(1, 5, 15)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h3opq"]
+albedo_color = Color(0, 0.321569, 0, 1)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_hbuke"]
 size = Vector3(30, 10, 1)
 
@@ -85,6 +91,11 @@ surface_material_override/0 = SubResource("StandardMaterial3D_it70o")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Ground_1/Ground"]
 shape = SubResource("BoxShape3D_wyent")
+
+[node name="Maze" type="MeshInstance3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 3, -2)
+mesh = SubResource("BoxMesh_pn6vn")
+surface_material_override/0 = SubResource("StandardMaterial3D_h3opq")
 
 [node name="WorldBorder" type="StaticBody3D" parent="."]
 
