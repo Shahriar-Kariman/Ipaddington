@@ -4,11 +4,16 @@ extends CharacterBody3D
 var SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 var bulletSpeed = 25
+const clipSize = 10
+var bulletsLeft = 0
 var health = 3
 signal playerHit
 signal playerDead
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
+
+func _ready():
+	bulletsLeft = clipSize
 	
 func _physics_process(delta):
 	if health == 0:

@@ -1,9 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://1u0kf1wkojvd"]
+[gd_scene load_steps=15 format=3 uid="uid://1u0kf1wkojvd"]
 
 [ext_resource type="PackedScene" uid="uid://bggbrc0a5hlp" path="res://player.tscn" id="1_jw5dv"]
 [ext_resource type="Script" path="res://level_1.gd" id="1_xu0mp"]
 [ext_resource type="PackedScene" uid="uid://cyk3rel1yw54v" path="res://pickup.tscn" id="2_qdsll"]
 [ext_resource type="PackedScene" uid="uid://bcyjvl6b4pkne" path="res://enemy_1.tscn" id="4_k81ti"]
+[ext_resource type="Script" path="res://PickupLabel.gd" id="5_apowu"]
 
 [sub_resource type="GDScript" id="GDScript_qqlae"]
 script/source = "extends Camera3D
@@ -125,4 +126,18 @@ shape = SubResource("BoxShape3D_hbuke")
 mesh = SubResource("BoxMesh_8bp04")
 surface_material_override/0 = SubResource("StandardMaterial3D_vrxxg")
 
+[node name="UserInterface" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1150.0
+offset_bottom = 650.0
+
+[node name="PickupLabel" type="Label" parent="UserInterface"]
+layout_mode = 0
+offset_right = 133.0
+offset_bottom = 32.0
+text = "Pickups Left: "
+script = ExtResource("5_apowu")
+
 [connection signal="caught_Pickup" from="Pickup" to="." method="_on_pickup_caught_pickup"]
+[connection signal="caught_Pickup" from="Pickup" to="UserInterface/PickupLabel" method="_on_pickup_caught_pickup"]

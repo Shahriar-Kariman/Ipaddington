@@ -3,6 +3,8 @@ extends Node3D
 @export var pickupTemplate: PackedScene
 @export var player: PackedScene
 @export var enemy_1: PackedScene
+var pickupsLeft = 0
+const PICKUPS_TO_WIN = 5
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -21,6 +23,7 @@ func _process(delta):
 	
 func _on_pickup_caught_pickup():
 	var pickup = pickupTemplate.instantiate()
+	pickupsLeft += 1
 	#set position of pickup to randomly on the ground
 	var groundSize = Vector3.ZERO
 	groundSize.x = 30
@@ -30,6 +33,7 @@ func _on_pickup_caught_pickup():
 	pickup.position.x = (randf() * groundSize.x) - groundSize.x/2
 	pickup.position.z = (randf() * groundSize.z) - groundSize.z/2
 	pickup.caught_Pickup.connect(_on_pickup_caught_pickup)
+	pickup.caught_Pickup.connect($UserInterface/PickupLabel._on_pickup_caught_pickup)
 	print(pickup.position.x)
 	print(pickup.position.z)
 	add_child(pickup) #adds as a child ourselves
