@@ -14,6 +14,8 @@ script = ExtResource("1_tpfbj")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
 [node name="Pickup" type="Area3D" parent="."]
+collision_layer = 32
+collision_mask = 5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Pickup"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
