@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://luadakbwo10w"]
+[gd_scene load_steps=12 format=3 uid="uid://luadakbwo10w"]
 
 [ext_resource type="PackedScene" uid="uid://bggbrc0a5hlp" path="res://player.tscn" id="1_d83k6"]
 
@@ -22,6 +22,8 @@ size = Vector3(30, 10, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_m24je"]
 size = Vector3(1, 10, 22)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_5q7ur"]
 
 [sub_resource type="GDScript" id="GDScript_0tafi"]
 script/source = "extends Camera3D
@@ -99,6 +101,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 4.5, 0)
 shape = SubResource("BoxShape3D_m24je")
 
 [node name="Player" parent="." instance=ExtResource("1_d83k6")]
+
+[node name="SpotlightArea" type="Area3D" parent="Player"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player/SpotlightArea"]
+shape = SubResource("CylinderShape3D_5q7ur")
 
 [node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("player")]
 transform = Transform3D(1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, 0, 15, 5)
