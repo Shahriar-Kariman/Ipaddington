@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cdflikg1xodxm"]
+
+[ext_resource type="Script" path="res://CharacterBody3D.gd" id="1_uo5x8"]
+
+[node name="Enemy_Sniper" type="CharacterBody3D"]
+script = ExtResource("1_uo5x8")
+
+[node name="ShootTimer" type="Timer" parent="."]
