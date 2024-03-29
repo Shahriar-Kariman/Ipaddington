@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bggbrc0a5hlp" path="res://player.tscn" id="1_jw5dv"]
 [ext_resource type="Script" path="res://level_1.gd" id="1_xu0mp"]
-[ext_resource type="PackedScene" uid="uid://cyk3rel1yw54v" path="res://pickup.tscn" id="2_qdsll"]
+[ext_resource type="PackedScene" uid="uid://cg33xde3rccf0" path="res://pickup.tscn" id="2_qdsll"]
 [ext_resource type="PackedScene" uid="uid://bcyjvl6b4pkne" path="res://enemy_1.tscn" id="4_k81ti"]
 [ext_resource type="Script" path="res://PickupLabel.gd" id="5_apowu"]
 
@@ -73,6 +73,7 @@ shadow_enabled = true
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, 0, 15, 5)
+current = true
 far = 100.0
 script = SubResource("GDScript_qqlae")
 

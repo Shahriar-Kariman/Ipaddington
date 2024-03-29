@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://luadakbwo10w"]
+[gd_scene load_steps=13 format=3 uid="uid://luadakbwo10w"]
 
 [ext_resource type="PackedScene" uid="uid://bggbrc0a5hlp" path="res://player.tscn" id="1_d83k6"]
 
@@ -24,6 +24,9 @@ size = Vector3(30, 10, 1)
 size = Vector3(1, 10, 22)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_5q7ur"]
+
+[sub_resource type="Environment" id="Environment_ycaa7"]
+volumetric_fog_enabled = true
 
 [sub_resource type="GDScript" id="GDScript_0tafi"]
 script/source = "extends Camera3D
@@ -53,7 +56,8 @@ func _process(delta):
 script/source = "extends SpotLight3D
 
 #lower values makes the spotlight follow the player more precisely overhead
-var followOverhead = 0.7
+const followOverhead = 0.5
+const hoverY = 20
 @export var player: CharacterBody3D
 
 # Called when the node enters the scene tree for the first time.
@@ -62,7 +66,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	position = Vector3(player.position.x/followOverhead,10,player.position.z/followOverhead)
+	position = Vector3(player.position.x/followOverhead,hoverY,player.position.z/followOverhead)
 	#if get_rotation_degrees().x != -90:
 	look_at(player.position)
 "
@@ -109,16 +113,25 @@ shape = SubResource("CylinderShape3D_5q7ur")
 
 [node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("player")]
 transform = Transform3D(1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, 0, 15, 5)
+environment = SubResource("Environment_ycaa7")
 far = 100.0
 script = SubResource("GDScript_0tafi")
 player = NodePath("../Player")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="." node_paths=PackedStringArray("player")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 10, 0)
-light_energy = 6.01
-spot_range = 30.0
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 20, 0)
+light_energy = 25.0
+light_volumetric_fog_energy = 0.5
+shadow_enabled = true
+spot_range = 40.0
 spot_attenuation = 0.707107
-spot_angle = 20.0
-spot_angle_attenuation = 0.450625
+spot_angle = 10.0
+spot_angle_attenuation = 0.258816
 script = SubResource("GDScript_qjulm")
 player = NodePath("../Player")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 20, 0)
+light_energy = 0.25
+light_indirect_energy = 0.05
+light_negative = true
