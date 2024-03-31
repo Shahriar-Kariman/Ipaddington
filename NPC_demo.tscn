@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://cpt185ktlxl4l"]
+
+[ext_resource type="PackedScene" path="res://npc.tscn" id="1_1pnmw"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_n41yv"]
+size = Vector3(100, 0.5, 100)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_d6hci"]
+size = Vector3(100, 0.5, 100)
+
+[node name="Main" type="Node3D"]
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D"]
+mesh = SubResource("BoxMesh_n41yv")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_d6hci")
+
+[node name="NPC" parent="." instance=ExtResource("1_1pnmw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.355057, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 5.52888, 0)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.939424, 0.342758, 0, -0.342758, 0.939424, 0, 5.125, 8.64602)
