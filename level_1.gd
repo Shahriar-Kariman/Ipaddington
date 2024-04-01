@@ -13,12 +13,14 @@ var walls: Array[SceneTree]
 func _ready():
 	#_generate_maze()
 	var p = player.instantiate()
+	p.position.x = $StartPoint.position.x
+	p.position.z = $StartPoint.position.z
 	$Camera3D.player = p
 	add_child(p)
 	var e = enemy_1.instantiate()
 	e.player = p
-	e.position.x = 9
-	e.position.z = -9
+	e.position.x = $EnemySpawnPoint_1.position.x
+	e.position.z = $EnemySpawnPoint_1.position.z
 	add_child(e)
 
 func _generate_maze():
