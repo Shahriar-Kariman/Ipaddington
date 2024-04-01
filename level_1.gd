@@ -3,11 +3,15 @@ extends Node3D
 @export var pickupTemplate: PackedScene
 @export var player: PackedScene
 @export var enemy_1: PackedScene
+@export var wall: PackedScene
 var pickupsLeft = 0
 const PICKUPS_TO_WIN = 5
 
+var walls: Array[SceneTree]
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	#_generate_maze()
 	var p = player.instantiate()
 	$Camera3D.player = p
 	add_child(p)
@@ -16,6 +20,12 @@ func _ready():
 	e.position.x = 9
 	e.position.z = -9
 	add_child(e)
+
+func _generate_maze():
+	for i in 50:
+		var w = wall.instantiate()
+		walls.push_back(w)
+		add_child(w)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
