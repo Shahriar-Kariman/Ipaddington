@@ -32,7 +32,8 @@ func _physics_process(delta):
 	
 	direction = nav.get_next_path_position() - global_position
 	look_at(player.position)
-	$Pivot.rotate_y(PI)
+	rotation.x = 0
+	#print(rotation)
 	
 	velocity += direction
 
