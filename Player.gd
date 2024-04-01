@@ -12,6 +12,10 @@ signal playerDead
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
+@export var camera: Camera3D
+var rayOrigin = Vector3()
+var rayEnd = Vector3()
+
 func _ready():
 	bulletsLeft = clipSize
 	
@@ -48,7 +52,25 @@ func _physics_process(delta):
 	if direction != Vector3.ZERO:
 		direction = direction.normalized()
 		# Setting the basis property will affect the rotation of the node.
-		$pivot.basis = Basis.looking_at(direction)
+		#$pivot.basis = Basis.looking_at(direction)
+	
+	# Ray casting stuff
+	var space_state = get_world_3d().direct_space_state
+	
+	# position of the mouse
+	var mouse_position = get_viewport().get_mouse_position()
+	
+	rayOrigin = camera.project_ray_origin(mouse_position)
+	rayEnd = rayOrigin + camera.project_ray_normal(mouse_position) * 1000
+	
+	var query = PhysicsRayQueryParameters3D.create(rayOrigin, rayEnd)
+	
+	var intersection = space_state.intersect_ray(query)
+	
+	if not intersection.is_empty():
+		var pos = intersection.position
+		look_at(pos)
+	
 	move_and_slide()
 
 func shoot():

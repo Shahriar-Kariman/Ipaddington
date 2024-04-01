@@ -18,6 +18,7 @@ func _ready():
 	p.position.x = $StartPoint.position.x
 	p.position.z = $StartPoint.position.z
 	$Camera3D.player = p
+	p.camera = $Camera3D
 	add_child(p)
 	for sp in spawnPoints:
 		var e = enemy_1.instantiate()
