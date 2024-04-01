@@ -125,6 +125,10 @@ script = null
 transform = Transform3D(1, 0, 0, 0, 3, 0, 0, 0, 20.16, 20, 2, -34)
 script = null
 
+[node name="Wall98" parent="NavigationRegion3D" instance=ExtResource("5_2vbxf")]
+transform = Transform3D(1, 0, 0, 0, 3, 0, 0, 0, 14, 47, 2, 43)
+script = null
+
 [node name="Wall57" parent="NavigationRegion3D" instance=ExtResource("5_2vbxf")]
 transform = Transform3D(1, 0, 0, 0, 3, 0, 0, 0, 20.16, -47, 2, -33)
 script = null
@@ -143,6 +147,14 @@ script = null
 
 [node name="Wall21" parent="NavigationRegion3D" instance=ExtResource("5_2vbxf")]
 transform = Transform3D(1, 0, 0, 0, 3, 0, 0, 0, 6.039, 12, 1.825, -47.445)
+script = null
+
+[node name="Wall96" parent="NavigationRegion3D" instance=ExtResource("5_2vbxf")]
+transform = Transform3D(1, 0, 0, 0, 3, 0, 0, 0, 6.039, 50, 1.825, 13.555)
+script = null
+
+[node name="Wall97" parent="NavigationRegion3D" instance=ExtResource("5_2vbxf")]
+transform = Transform3D(1, 0, 0, 0, 3, 0, 0, 0, 3.864, 50, 1.825, 23.555)
 script = null
 
 [node name="Wall33" parent="NavigationRegion3D" instance=ExtResource("5_2vbxf")]
@@ -265,8 +277,16 @@ script = null
 transform = Transform3D(1, 0, 0, 0, 3, 0, 0, 0, 37.0944, 44.205, 2, -31.375)
 script = null
 
+[node name="Wall99" parent="NavigationRegion3D" instance=ExtResource("5_2vbxf")]
+transform = Transform3D(1, 0, 0, 0, 3, 0, 0, 0, 37.0944, 66.205, 2, 31.625)
+script = null
+
 [node name="Wall89" parent="NavigationRegion3D" instance=ExtResource("5_2vbxf")]
-transform = Transform3D(1, 0, 0, 0, 3, 0, 0, 0, 37.0944, 40.205, 2, 13.625)
+transform = Transform3D(1, 0, 0, 0, 3, 0, 0, 0, 35.299, 40.205, 2, 13.625)
+script = null
+
+[node name="Wall100" parent="NavigationRegion3D" instance=ExtResource("5_2vbxf")]
+transform = Transform3D(1, 0, 0, 0, 3, 0, 0, 0, 39.634, 65.205, 2, -30.375)
 script = null
 
 [node name="Wall22" parent="NavigationRegion3D" instance=ExtResource("5_2vbxf")]
@@ -283,6 +303,10 @@ script = null
 
 [node name="Wall6" parent="NavigationRegion3D" instance=ExtResource("5_2vbxf")]
 transform = Transform3D(-4.37114e-08, 0, 19.5955, 0, 3, 0, -1, 0, -8.56547e-07, 9.59, 2, -20.08)
+script = null
+
+[node name="Wall92" parent="NavigationRegion3D" instance=ExtResource("5_2vbxf")]
+transform = Transform3D(-4.37114e-08, 0, 19.5955, 0, 3, 0, -1, 0, -8.56547e-07, 49.59, 2, 30.92)
 script = null
 
 [node name="Wall19" parent="NavigationRegion3D" instance=ExtResource("5_2vbxf")]
@@ -313,8 +337,24 @@ script = null
 transform = Transform3D(1, 0, 0, 0, 3, 0, 0, 0, 20.16, 40, 2, -29)
 script = null
 
+[node name="Wall91" parent="NavigationRegion3D" instance=ExtResource("5_2vbxf")]
+transform = Transform3D(1, 0, 0, 0, 3, 0, 0, 0, 20.16, 59, 2, 21)
+script = null
+
 [node name="Wall79" parent="NavigationRegion3D" instance=ExtResource("5_2vbxf")]
 transform = Transform3D(-4.37114e-08, 0, 11.672, 0, 3, 0, -1, 0, -5.10199e-07, 34.59, 2, -39.08)
+script = null
+
+[node name="Wall93" parent="NavigationRegion3D" instance=ExtResource("5_2vbxf")]
+transform = Transform3D(-4.37114e-08, 0, 11.672, 0, 3, 0, -1, 0, -5.10199e-07, 49.59, 2, 25.92)
+script = null
+
+[node name="Wall94" parent="NavigationRegion3D" instance=ExtResource("5_2vbxf")]
+transform = Transform3D(-4.37114e-08, 0, 11.672, 0, 3, 0, -1, 0, -5.10199e-07, 49.59, 2, 21.92)
+script = null
+
+[node name="Wall95" parent="NavigationRegion3D" instance=ExtResource("5_2vbxf")]
+transform = Transform3D(-4.37114e-08, 0, 11.672, 0, 3, 0, -1, 0, -5.10199e-07, 49.59, 2, 16.92)
 script = null
 
 [node name="Wall80" parent="NavigationRegion3D" instance=ExtResource("5_2vbxf")]
@@ -354,7 +394,7 @@ transform = Transform3D(-4.37114e-08, 0, 20.16, 0, 3, 0, -1, 0, -8.81222e-07, 9.
 script = null
 
 [node name="Wall84" parent="NavigationRegion3D" instance=ExtResource("5_2vbxf")]
-transform = Transform3D(1, 0, 0, 0, 3, 0, 0, 0, 14, 40, 2, 42)
+transform = Transform3D(1, 0, 0, 0, 3, 0, 0, 0, 14, 40, 2, 43)
 script = null
 
 [node name="Wall85" parent="NavigationRegion3D" instance=ExtResource("5_2vbxf")]
@@ -509,6 +549,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -65, 0, 0)
 
 [node name="EnemySpawnPoint_1" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34, 0, -3)
+
+[node name="EnemySpawnPoint_2" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55, 0, -42)
+
+[node name="EnemySpawnPoint_3" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55, 0, -22)
+
+[node name="EnemySpawnPoint_4" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 46)
 
 [connection signal="caught_Pickup" from="Pickup" to="." method="_on_pickup_caught_pickup"]
 [connection signal="caught_Pickup" from="Pickup" to="UserInterface/PickupLabel" method="_on_pickup_caught_pickup"]
