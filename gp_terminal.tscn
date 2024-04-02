@@ -1,9 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://cvblhymat0ksy"]
+[gd_scene load_steps=5 format=3 uid="uid://cvblhymat0ksy"]
 
 [ext_resource type="Script" path="res://gp_terminal.gd" id="1_bnx1a"]
 [ext_resource type="Script" path="res://Area3D.gd" id="1_qua8h"]
+[ext_resource type="PackedScene" uid="uid://gdf323pxnn7" path="res://free_terminal_2/sketchfab_scene.tscn" id="3_veppk"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_q1qw7"]
+size = Vector3(3, 2, 1.6)
 
 [node name="GPTerminal" type="Node3D"]
 script = ExtResource("1_bnx1a")
@@ -12,7 +14,10 @@ script = ExtResource("1_bnx1a")
 script = ExtResource("1_qua8h")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0.2)
 shape = SubResource("BoxShape3D_q1qw7")
+
+[node name="Sketchfab_Scene" parent="." instance=ExtResource("3_veppk")]
 
 [connection signal="body_entered" from="Area3D" to="Area3D" method="_on_body_entered"]
 [connection signal="body_exited" from="Area3D" to="Area3D" method="_on_body_exited"]

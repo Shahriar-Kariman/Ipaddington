@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://gdf323pxnn7"]
+
+[ext_resource type="PackedScene" uid="uid://bcauggamv6wq7" path="res://free_terminal_2/scene.gltf" id="1_fwtuk"]
+
+[node name="Sketchfab_Scene" instance=ExtResource("1_fwtuk")]
+
+[node name="Sketchfab_model" parent="." index="0"]
+transform = Transform3D(0.1, 0, 0, 0, -4.37114e-09, 0.1, 0, -0.1, -4.37114e-09, 0, 0.7, 0)
+
+[node name="StandkonsoleFBXASC032120" parent="Sketchfab_model/Collada visual scene group" index="0"]
+transform = Transform3D(0.737783, 0, 0, 0, 0, 0.737783, 0, -0.737783, 0, 0, 0, 0)

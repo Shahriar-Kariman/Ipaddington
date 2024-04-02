@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bn3t2n13caku8"]
+
+[ext_resource type="PackedScene" uid="uid://b7qd86rrqjsiy" path="res://free_airlock_door/sketchfab_scene.tscn" id="1_kc3ih"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_iwooq"]
+size = Vector3(7, 6, 5)
+
+[node name="Door" type="Node3D"]
+
+[node name="Sketchfab_Scene" parent="." instance=ExtResource("1_kc3ih")]
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+shape = SubResource("BoxShape3D_iwooq")

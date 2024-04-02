@@ -1,0 +1,11 @@
+Model Information:
+* title:	Free Airlock Door
+* source:	https://sketchfab.com/3d-models/free-airlock-door-58729c7672ae4e01a6103617c2f4f55e
+* author:	michael_grodkowski (https://sketchfab.com/michael_grodkowski)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Free Airlock Door" (https://sketchfab.com/3d-models/free-airlock-door-58729c7672ae4e01a6103617c2f4f55e) by michael_grodkowski (https://sketchfab.com/michael_grodkowski) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

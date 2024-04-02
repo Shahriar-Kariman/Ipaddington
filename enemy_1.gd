@@ -31,8 +31,9 @@ func _physics_process(delta):
 	nav.target_position = player.position
 	
 	direction = nav.get_next_path_position() - global_position
-	look_at(direction)
+	look_at(player.position)
 	rotation.x = 0
+	rotation.z = 0
 	#print(rotation)
 	
 	velocity += direction

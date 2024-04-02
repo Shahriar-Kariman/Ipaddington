@@ -70,6 +70,8 @@ func _physics_process(delta):
 	if not intersection.is_empty():
 		var pos = intersection.position
 		look_at(pos)
+		rotation.x = 0
+		rotation.z = 0
 	
 	move_and_slide()
 
