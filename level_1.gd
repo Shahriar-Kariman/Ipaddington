@@ -19,6 +19,7 @@ func _ready():
 	p.position.z = $StartPoint.position.z
 	$Camera3D.player = p
 	p.camera = $Camera3D
+	$GPTerminal_1.reload.connect(p._reload)
 	add_child(p)
 	for sp in spawnPoints:
 		var e = enemy_1.instantiate()
@@ -54,4 +55,4 @@ func _on_pickup_caught_pickup():
 	print(pickup.position.x)
 	print(pickup.position.z)
 	add_child(pickup) #adds as a child ourselves
-	
+

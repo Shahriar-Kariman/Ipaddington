@@ -5,7 +5,7 @@ var SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 var bulletSpeed = 25
 const clipSize = 10
-var bulletsLeft = 0
+var bulletsLeft = 10
 var health = 3
 signal playerHit
 signal playerDead
@@ -76,12 +76,19 @@ func _physics_process(delta):
 	move_and_slide()
 
 func shoot():
-	var bullet = projectile.instantiate()
-	add_sibling(bullet)
-	bullet.position = position
-	bullet.rotation = $pivot.rotation
+	if bulletsLeft > 0:
+		var bullet = projectile.instantiate()
+		bullet.position = position
+		bullet.rotation = rotation
+		add_sibling(bullet)
+		bulletsLeft -= 1
 
 func _on_area_3d_area_entered(area):
 	if area.name == "Enemy":
 		health -= 1
 		playerHit.emit()
+
+func _reload():
+	#bulletsLeft = startBullets
+	bulletsLeft = 6
+	print(bulletsLeft)

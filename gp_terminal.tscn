@@ -10,14 +10,14 @@ size = Vector3(3, 2, 1.6)
 [node name="GPTerminal" type="Node3D"]
 script = ExtResource("1_bnx1a")
 
-[node name="Area3D" type="Area3D" parent="."]
+[node name="TerminalArea" type="Area3D" parent="."]
 script = ExtResource("1_qua8h")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TerminalArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0.2)
 shape = SubResource("BoxShape3D_q1qw7")
 
 [node name="Sketchfab_Scene" parent="." instance=ExtResource("3_veppk")]
 
-[connection signal="body_entered" from="Area3D" to="Area3D" method="_on_body_entered"]
-[connection signal="body_exited" from="Area3D" to="Area3D" method="_on_body_exited"]
+[connection signal="body_entered" from="TerminalArea" to="TerminalArea" method="_on_body_entered"]
+[connection signal="body_exited" from="TerminalArea" to="TerminalArea" method="_on_body_exited"]
