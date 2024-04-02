@@ -104,7 +104,8 @@ shape = SubResource("BoxShape3D_0xvru")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 4.5, 0)
 shape = SubResource("BoxShape3D_m24je")
 
-[node name="Player" parent="." instance=ExtResource("1_d83k6")]
+[node name="Player" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("1_d83k6")]
+camera = NodePath("../Camera3D")
 
 [node name="SpotlightArea" type="Area3D" parent="Player"]
 
