@@ -1,7 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://d3dvcsa7k4cna"]
+[gd_scene load_steps=4 format=3 uid="uid://b7mqm3a783iud"]
 
 [ext_resource type="Script" path="res://NPC.gd" id="1_vfd7l"]
-[ext_resource type="PackedScene" uid="uid://llondre6pndc" path="res://npcInherent.tscn" id="2_3flh2"]
+[ext_resource type="PackedScene" path="res://npcInherent.tscn" id="2_3flh2"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_18tm7"]
 
@@ -19,8 +19,12 @@ autostart = true
 
 [node name="FrontLight" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0, 0, 0)
+visible = false
 
 [node name="BackLight" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -1, -8.74228e-08, 0, 8.74228e-08, -1, 0, 0, 0)
+visible = false
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
