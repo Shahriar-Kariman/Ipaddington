@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://1u0kf1wkojvd"]
+[gd_scene load_steps=20 format=3 uid="uid://1u0kf1wkojvd"]
 
 [ext_resource type="PackedScene" uid="uid://bggbrc0a5hlp" path="res://player.tscn" id="1_jw5dv"]
 [ext_resource type="Script" path="res://level_1.gd" id="1_xu0mp"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://b7mqm3a783iud" path="res://npc.tscn" id="6_hsdy3"]
 [ext_resource type="PackedScene" uid="uid://bn3t2n13caku8" path="res://door.tscn" id="7_yfjvw"]
 [ext_resource type="PackedScene" uid="uid://cvblhymat0ksy" path="res://gp_terminal.tscn" id="8_g4um7"]
+[ext_resource type="PackedScene" uid="uid://ua4gytx07wc8" path="res://compass.tscn" id="10_idxvp"]
 
 [sub_resource type="GDScript" id="GDScript_qqlae"]
 script/source = "extends Camera3D
@@ -59,7 +60,7 @@ size = Vector3(60, 0.5, 40)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vrxxg"]
 albedo_color = Color(0.054902, 0.054902, 0.054902, 1)
 
-[node name="Level1" type="Node3D"]
+[node name="Level1" type="Node"]
 script = ExtResource("1_xu0mp")
 pickupTemplate = ExtResource("2_qdsll")
 player = ExtResource("1_jw5dv")
@@ -559,7 +560,7 @@ offset_bottom = 46.0
 text = "Bullets:"
 
 [node name="StartPoint" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 3, 3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -68, 2, 2)
 
 [node name="EnemySpawnPoint_1" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34, 0, -3)
@@ -581,6 +582,13 @@ transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 11, 0.5, -
 
 [node name="GPTerminal_2" parent="." instance=ExtResource("8_g4um7")]
 transform = Transform3D(-0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, -0.965926, -18, 0.5, 47)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+scale = Vector2(0.4, 0.4)
+transform = Transform2D(0.4, 0, 0, 0.4, 0, 0)
+
+[node name="compass" parent="CanvasLayer" instance=ExtResource("10_idxvp")]
+position = Vector2(1997.5, 967.5)
 
 [connection signal="caught_Pickup" from="Pickup" to="." method="_on_pickup_caught_pickup"]
 [connection signal="caught_Pickup" from="Pickup" to="UserInterface/PickupLabel" method="_on_pickup_caught_pickup"]

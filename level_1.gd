@@ -1,4 +1,4 @@
-extends Node3D
+extends Node
 
 @export var pickupTemplate: PackedScene
 @export var player: PackedScene
@@ -13,12 +13,13 @@ var walls: Array[SceneTree]
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	spawnPoints = [ $EnemySpawnPoint_1, $EnemySpawnPoint_2, $EnemySpawnPoint_3, $EnemySpawnPoint_4 ]
-	#_generate_maze()
+	var compass = $CanvasLayer/compass
 	var p = player.instantiate()
 	p.position.x = $StartPoint.position.x
 	p.position.z = $StartPoint.position.z
 	$Camera3D.player = p
 	p.camera = $Camera3D
+	compass.player = p
 	$GPTerminal_1.reload.connect(p._reload)
 	add_child(p)
 	for sp in spawnPoints:
@@ -26,6 +27,7 @@ func _ready():
 		e.player = p
 		e.position.x = sp.position.x
 		e.position.z = sp.position.z
+		compass.enemies.append(e)
 		add_child(e)
 
 # not really used any more
