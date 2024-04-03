@@ -29,6 +29,8 @@ func _ready():
 		e.position.z = sp.position.z
 		compass.enemies.append(e)
 		add_child(e)
+	compass.terminals.append($GPTerminal_1)
+	compass.terminals.append($GPTerminal_2)
 
 # not really used any more
 func _generate_maze():
@@ -57,4 +59,3 @@ func _on_pickup_caught_pickup():
 	print(pickup.position.x)
 	print(pickup.position.z)
 	add_child(pickup) #adds as a child ourselves
-
