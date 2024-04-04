@@ -13,7 +13,7 @@ var walls: Array[SceneTree]
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	spawnPoints = [ $EnemySpawnPoint_1, $EnemySpawnPoint_2, $EnemySpawnPoint_3, $EnemySpawnPoint_4 ]
-	var compass = $CanvasLayer/compass
+	var compass = $CanvasLayer/minimap
 	var p = player.instantiate()
 	p.position.x = $StartPoint.position.x
 	p.position.z = $StartPoint.position.z

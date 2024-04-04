@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://ua4gytx07wc8"]
 
-[ext_resource type="Script" path="res://compass.gd" id="1_1di6m"]
+[ext_resource type="Script" path="res://minimap.gd" id="1_1di6m"]
 [ext_resource type="Texture2D" uid="uid://uiuakvfj3xu7" path="res://hollow_circle.png" id="1_8civp"]
 [ext_resource type="Texture2D" uid="uid://byo0wbfdweuva" path="res://icon.svg" id="3_4u1ep"]
 [ext_resource type="Texture2D" uid="uid://dlh87qiauk3hj" path="res://terminal.png" id="4_6jklq"]
@@ -38,7 +38,7 @@ _surfaces = [{
 "vertex_data": PackedByteArray(0, 0, 32, 66, 154, 153, 23, 194, 0, 0, 32, 66, 0, 0, 24, 66, 0, 0, 32, 194, 0, 0, 24, 66, 0, 0, 32, 194, 205, 204, 20, 194, 0, 0, 24, 194, 205, 204, 24, 194, 0, 0, 24, 194, 102, 102, 32, 194)
 }]
 
-[node name="compass" type="Node2D"]
+[node name="minimap" type="Node2D"]
 script = ExtResource("1_1di6m")
 
 [node name="Control" type="Control" parent="."]

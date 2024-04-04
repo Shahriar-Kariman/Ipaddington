@@ -38,9 +38,12 @@ func _place_enemy_markers():
 	var index = 0
 	for i in multi_mesh_enemy.instance_count:
 		var v = Vector2(enemies[index].global_position.x, enemies[index].global_position.z) - Vector2(player.global_position.x, player.global_position.z)
+		var dist = v.length()/21
+		if dist>1:
+			dist = 1
 		index += 1
 		v = v.normalized()
-		var pos = center + v * 260
+		var pos = center + v * 260 * dist
 		var sk = 0.0
 		var rot = 0.0
 		var sc = Vector2(0.3,0.3)
@@ -51,9 +54,12 @@ func _place_terminal_markers():
 	var index = 0
 	for i in multi_mesh_terminal.instance_count:
 		var v = Vector2(terminals[index].global_position.x, terminals[index].global_position.z) - Vector2(player.global_position.x, player.global_position.z)
+		var dist = v.length()/21
+		if dist>1:
+			dist = 1
 		index += 1
 		v = v.normalized()
-		var pos = center + v * 260
+		var pos = center + v * 260 * dist
 		var sk = 0.0
 		var rot = 0.0
 		var sc = Vector2(0.5,0.5)

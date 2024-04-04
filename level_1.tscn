@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://b7mqm3a783iud" path="res://npc.tscn" id="6_hsdy3"]
 [ext_resource type="PackedScene" uid="uid://bn3t2n13caku8" path="res://door.tscn" id="7_yfjvw"]
 [ext_resource type="PackedScene" uid="uid://cvblhymat0ksy" path="res://gp_terminal.tscn" id="8_g4um7"]
-[ext_resource type="PackedScene" uid="uid://ua4gytx07wc8" path="res://compass.tscn" id="10_idxvp"]
+[ext_resource type="PackedScene" uid="uid://ua4gytx07wc8" path="res://minimap.tscn" id="10_idxvp"]
 
 [sub_resource type="GDScript" id="GDScript_qqlae"]
 script/source = "extends Camera3D
@@ -587,7 +587,7 @@ transform = Transform3D(-0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, -0.965926
 scale = Vector2(0.4, 0.4)
 transform = Transform2D(0.4, 0, 0, 0.4, 0, 0)
 
-[node name="compass" parent="CanvasLayer" instance=ExtResource("10_idxvp")]
+[node name="minimap" parent="CanvasLayer" instance=ExtResource("10_idxvp")]
 position = Vector2(1997.5, 967.5)
 
 [connection signal="caught_Pickup" from="Pickup" to="." method="_on_pickup_caught_pickup"]
