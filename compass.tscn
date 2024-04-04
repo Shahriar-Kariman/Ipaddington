@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://ua4gytx07wc8"]
+[gd_scene load_steps=10 format=3 uid="uid://ua4gytx07wc8"]
 
 [ext_resource type="Script" path="res://compass.gd" id="1_1di6m"]
 [ext_resource type="Texture2D" uid="uid://uiuakvfj3xu7" path="res://hollow_circle.png" id="1_8civp"]
 [ext_resource type="Texture2D" uid="uid://byo0wbfdweuva" path="res://icon.svg" id="3_4u1ep"]
 [ext_resource type="Texture2D" uid="uid://dlh87qiauk3hj" path="res://terminal.png" id="4_6jklq"]
+[ext_resource type="Texture2D" uid="uid://ddtny6ig8jo36" path="res://arrow.png" id="5_eaf5r"]
 
 [sub_resource type="MultiMesh" id="MultiMesh_crn1h"]
 
@@ -80,3 +81,7 @@ visible = false
 position = Vector2(-174, 223)
 mesh = SubResource("ArrayMesh_abq1r")
 texture = ExtResource("4_6jklq")
+
+[node name="Arrow" type="Sprite2D" parent="."]
+position = Vector2(583.575, 326)
+texture = ExtResource("5_eaf5r")

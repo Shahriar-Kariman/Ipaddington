@@ -32,6 +32,7 @@ func _process(delta):
 	_place_enemy_markers()
 	multi_mesh_terminal.instance_count = terminals.size()
 	_place_terminal_markers()
+	_arrow_rotation()
 
 func _place_enemy_markers():
 	var index = 0
@@ -58,3 +59,6 @@ func _place_terminal_markers():
 		var sc = Vector2(0.5,0.5)
 		var t = Transform2D(rot, sc, sk, pos)
 		multi_mesh_terminal.set_instance_transform_2d(i, t)
+
+func _arrow_rotation():
+	$Arrow.rotation = -player.rotation.y - PI/2
