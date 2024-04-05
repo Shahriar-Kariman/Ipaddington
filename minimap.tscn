@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://ua4gytx07wc8"]
+[gd_scene load_steps=11 format=3 uid="uid://ua4gytx07wc8"]
 
 [ext_resource type="Script" path="res://minimap.gd" id="1_1di6m"]
 [ext_resource type="Texture2D" uid="uid://uiuakvfj3xu7" path="res://hollow_circle.png" id="1_8civp"]
+[ext_resource type="Texture2D" uid="uid://c17bkm71ksuhr" path="res://circle_background.png" id="2_amc0b"]
 [ext_resource type="Texture2D" uid="uid://byo0wbfdweuva" path="res://icon.svg" id="3_4u1ep"]
 [ext_resource type="Texture2D" uid="uid://dlh87qiauk3hj" path="res://terminal.png" id="4_6jklq"]
 [ext_resource type="Texture2D" uid="uid://ddtny6ig8jo36" path="res://arrow.png" id="5_eaf5r"]
@@ -40,6 +41,11 @@ _surfaces = [{
 
 [node name="minimap" type="Node2D"]
 script = ExtResource("1_1di6m")
+
+[node name="CircleBackground" type="Sprite2D" parent="."]
+position = Vector2(580, 325)
+scale = Vector2(6, 6)
+texture = ExtResource("2_amc0b")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3

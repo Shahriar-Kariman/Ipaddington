@@ -588,7 +588,8 @@ scale = Vector2(0.4, 0.4)
 transform = Transform2D(0.4, 0, 0, 0.4, 0, 0)
 
 [node name="minimap" parent="CanvasLayer" instance=ExtResource("10_idxvp")]
-position = Vector2(1997.5, 967.5)
+position = Vector2(2215, -12.5)
+scale = Vector2(0.75, 0.75)
 
 [connection signal="caught_Pickup" from="Pickup" to="." method="_on_pickup_caught_pickup"]
 [connection signal="caught_Pickup" from="Pickup" to="UserInterface/PickupLabel" method="_on_pickup_caught_pickup"]
