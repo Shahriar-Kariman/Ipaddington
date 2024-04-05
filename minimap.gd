@@ -46,7 +46,7 @@ func _place_enemy_markers():
 		var pos = center + v * 260 * dist
 		var sk = 0.0
 		var rot = 0.0
-		var sc = Vector2(0.3,0.3)
+		var sc = Vector2(0.5,0.5)
 		var t = Transform2D(rot, sc, sk, pos)
 		multi_mesh_enemy.set_instance_transform_2d(i, t)
 
@@ -62,7 +62,7 @@ func _place_terminal_markers():
 		var pos = center + v * 260 * dist
 		var sk = 0.0
 		var rot = 0.0
-		var sc = Vector2(0.5,0.5)
+		var sc = Vector2(0.8,0.8)
 		var t = Transform2D(rot, sc, sk, pos)
 		multi_mesh_terminal.set_instance_transform_2d(i, t)
 

@@ -82,4 +82,5 @@ texture = ExtResource("4_6jklq")
 
 [node name="Arrow" type="Sprite2D" parent="."]
 position = Vector2(583.575, 326)
+scale = Vector2(1.2, 1.2)
 texture = ExtResource("5_eaf5r")
