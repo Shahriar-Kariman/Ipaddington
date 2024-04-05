@@ -11,6 +11,8 @@ size = Vector3(6, 2, 5)
 script = ExtResource("1_bnx1a")
 
 [node name="TerminalArea" type="Area3D" parent="."]
+collision_layer = 64
+collision_mask = 4
 script = ExtResource("1_qua8h")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="TerminalArea"]
@@ -19,5 +21,7 @@ shape = SubResource("BoxShape3D_q1qw7")
 
 [node name="Sketchfab_Scene" parent="." instance=ExtResource("3_veppk")]
 
+[connection signal="body_entered" from="TerminalArea" to="." method="_on_terminal_area_body_entered"]
 [connection signal="body_entered" from="TerminalArea" to="TerminalArea" method="_on_body_entered"]
+[connection signal="body_exited" from="TerminalArea" to="." method="_on_terminal_area_body_exited"]
 [connection signal="body_exited" from="TerminalArea" to="TerminalArea" method="_on_body_exited"]

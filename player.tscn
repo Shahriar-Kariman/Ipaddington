@@ -1,36 +1,58 @@
-[gd_scene load_steps=6 format=3 uid="uid://bggbrc0a5hlp"]
+[gd_scene load_steps=10 format=3 uid="uid://bggbrc0a5hlp"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_738oc"]
 [ext_resource type="PackedScene" uid="uid://bhcf02xwag1dh" path="res://gun.tscn" id="2_66mm8"]
 [ext_resource type="PackedScene" uid="uid://brr5dqw658l70" path="res://projectile.tscn" id="2_t5ggj"]
+[ext_resource type="PackedScene" uid="uid://bdwve2nacf6hb" path="res://KayKit_Adventurers_1.0_FREE/Characters/gltf/Rogue.glb" id="3_65j8r"]
+[ext_resource type="AudioStream" uid="uid://ciq63eevpkmjg" path="res://12-Gauge-Pump-Action-Shotgun-Close-Gunshot-B-www.fesliyanstudios.com(1).mp3" id="4_pwnj2"]
+[ext_resource type="AudioStream" uid="uid://bii7y2bxm6l85" path="res://roblox-death-sound-effect.mp3" id="5_dbrjm"]
+[ext_resource type="AudioStream" uid="uid://br8w0xweq0fx2" path="res://oof-slow.mp3" id="6_w472f"]
+[ext_resource type="AudioStream" uid="uid://daen244wgvhpe" path="res://gunreload.mp3" id="8_lue30"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kikha"]
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_wn4r5"]
+radius = 0.6
 
 [node name="Player" type="CharacterBody3D" groups=["Player"]]
 collision_layer = 4
-collision_mask = 27
+collision_mask = 491
 script = ExtResource("1_738oc")
 projectile = ExtResource("2_t5ggj")
 
 [node name="pivot" type="Node3D" parent="."]
 
 [node name="Gun" parent="pivot" instance=ExtResource("2_66mm8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.6)
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0.2, -0.6)
+
+[node name="Rogue2" parent="pivot" instance=ExtResource("3_65j8r")]
+transform = Transform3D(-0.9, 0, -7.86805e-08, 0, 0.9, 0, 7.86805e-08, 0, -0.9, 0, -0.8, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_kikha")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("CapsuleMesh_wn4r5")
-
-[node name="Player" type="Area3D" parent="."]
+[node name="Player" type="Area3D" parent="." groups=["Player"]]
+collision_layer = 4
+collision_mask = 491
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
 shape = SubResource("CapsuleShape3D_kikha")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Player"]
-mesh = SubResource("CapsuleMesh_wn4r5")
+[node name="Immunity" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true
 
-[connection signal="area_entered" from="Player" to="." method="_on_area_3d_area_entered"]
+[node name="GunShotSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("4_pwnj2")
+volume_db = 2.0
+
+[node name="PlayerHit" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("5_dbrjm")
+volume_db = 20.0
+
+[node name="PlayerDeath" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("6_w472f")
+volume_db = 40.0
+
+[node name="Reload" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("8_lue30")
+volume_db = 40.0
+max_db = 6.0

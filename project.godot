@@ -79,3 +79,6 @@ reload={
 3d_physics/layer_4="Enemy"
 3d_physics/layer_5="Bullet"
 3d_physics/layer_6="Pickup"
+3d_physics/layer_7="GPTerminal"
+3d_physics/layer_8="Walls"
+3d_physics/layer_9="NPC"

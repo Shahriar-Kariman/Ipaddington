@@ -54,3 +54,7 @@ func choose (array):
 func _on_timer_timeout():
 	$Timer.wait_time = choose ([0.5,1,1.5]) 
 	current_state = choose([IDLE,NEW_DIR,MOVE])
+
+func _on_area_3d_body_entered(body):
+	if body.is_in_group("Player"):
+		$NPCAdvice.play()

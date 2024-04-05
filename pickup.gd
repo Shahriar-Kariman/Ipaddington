@@ -15,4 +15,3 @@ func _on_pickup_body_entered(body):
 	if body.is_in_group("Player"):
 		queue_free()
 		caught_Pickup.emit()
-		print("At Pickup")

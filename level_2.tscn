@@ -1,6 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://luadakbwo10w"]
+[gd_scene load_steps=15 format=3 uid="uid://luadakbwo10w"]
 
+[ext_resource type="Script" path="res://level_2.gd" id="1_58mfs"]
 [ext_resource type="PackedScene" uid="uid://bggbrc0a5hlp" path="res://player.tscn" id="1_d83k6"]
+[ext_resource type="AudioStream" uid="uid://0squllvk64wy" path="res://gloomy-and-sinister-for-video-game-trailers-165985.mp3" id="3_3dy0m"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_i5jan"]
 size = Vector3(30, 1, 20)
@@ -72,6 +74,7 @@ func _process(delta):
 "
 
 [node name="Level2" type="Node3D"]
+script = ExtResource("1_58mfs")
 
 [node name="Ground" type="StaticBody3D" parent="."]
 
@@ -136,3 +139,7 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 20,
 light_energy = 0.25
 light_indirect_energy = 0.05
 light_negative = true
+
+[node name="Lvl2Background" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_3dy0m")
+autoplay = true

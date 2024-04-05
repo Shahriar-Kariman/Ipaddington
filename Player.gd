@@ -7,8 +7,11 @@ var bulletSpeed = 25
 const clipSize = 10
 var bulletsLeft = 10
 var health = 3
+var lives = 3
 signal playerHit
 signal playerDead
+signal playerLifeLost
+signal playerShoot
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
@@ -21,14 +24,16 @@ func _ready():
 	
 func _physics_process(delta):
 	if health == 0:
-		playerDead.emit()
+		health = 3
+		lives -= 1
+		playerLifeLost.emit(self, lives)
+		$PlayerDeath.play()
+	if lives == 0:
+		playerDead.emit(self)
 		
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 
-	# Handle Jump.
-	if Input.is_action_just_pressed("jump") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
 	if Input.is_action_just_pressed("move_run"):
 		SPEED = 10
 	if Input.is_action_just_released("move_run"):
@@ -69,26 +74,35 @@ func _physics_process(delta):
 	
 	if not intersection.is_empty():
 		var pos = intersection.position
-		$pivot.look_at(pos)
+		$pivot.look_at(Vector3(pos.x, position.y, pos.z))
 		rotation.x = 0
 		rotation.z = 0
 	
 	move_and_slide()
+	handleCollisions()
 
 func shoot():
-	if bulletsLeft > 0:
-		var bullet = projectile.instantiate()
-		bullet.position = position
-		bullet.rotation = rotation
-		add_sibling(bullet)
-		bulletsLeft -= 1
+	var bullet = projectile.instantiate()
+	bullet.position = position
+	bullet.rotation = get_node("pivot").rotation
+	add_sibling(bullet)
+	$GunShotSound.play()
+	bulletsLeft -= 1
+	playerShoot.emit()
 
-func _on_area_3d_area_entered(area):
-	if area.name == "Enemy":
-		health -= 1
-		playerHit.emit()
-
+#Immunity frames, handle enemy collisions
+func handleCollisions():
+	if $Immunity.is_stopped() or $Immunity.time_left == 0 :
+		for index in range(get_slide_collision_count()):
+			var collision = get_slide_collision(index)
+			if collision.get_collider() == null:
+				continue
+			if collision.get_collider().is_in_group("Enemy"):
+				health -= 1
+				$PlayerHit.play()
+				playerHit.emit(health)
+				$Immunity.start()
+				break
 func _reload():
-	#bulletsLeft = startBullets
-	bulletsLeft = 6
-	print(bulletsLeft)
+	bulletsLeft = clipSize
+	$Reload.play()

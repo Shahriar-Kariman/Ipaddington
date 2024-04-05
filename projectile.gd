@@ -11,11 +11,13 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	position += transform.basis * Vector3(0,0,-speed)* delta
-	if position.z > 10.5 or position.z < -10.5:
-		queue_free()
-	elif position.x > 15.5 or position.x < -15.5:
-		queue_free()
-		
+
 func _on_timer_timeout():
 	queue_free()
 
+
+
+func _on_body_entered(body):
+	if body.is_in_group("Wall"):
+		queue_free()
+	

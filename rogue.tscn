@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://njd70pbc0a3f"]
+
+[ext_resource type="PackedScene" uid="uid://bdwve2nacf6hb" path="res://KayKit_Adventurers_1.0_FREE/Characters/gltf/Rogue.glb" id="1_41pqc"]
+
+[node name="Rogue" instance=ExtResource("1_41pqc")]
+
+[node name="Skeleton3D" parent="Rig" index="0"]
+bones/46/rotation = Quaternion(-0.396088, 0.565425, 0.517798, -0.505266)
+
+[node name="AnimationPlayer" parent="." index="1"]
+autoplay = "Unarmed_Idle"

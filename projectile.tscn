@@ -1,19 +1,21 @@
 [gd_scene load_steps=4 format=3 uid="uid://brr5dqw658l70"]
 
 [ext_resource type="Script" path="res://projectile.gd" id="1_xbt75"]
+[ext_resource type="ArrayMesh" uid="uid://b32b280ec5slg" path="res://ammo_pistol.obj" id="2_8wsfm"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1hxa8"]
+size = Vector3(0.5, 0.5, 1)
 
-[sub_resource type="BoxMesh" id="BoxMesh_kdbfp"]
-size = Vector3(0.5, 0.5, 0.5)
-
-[node name="Projectile" type="Area3D"]
+[node name="Projectile" type="Area3D" groups=["Projectile"]]
 collision_layer = 16
-collision_mask = 10
+collision_mask = 138
 script = ExtResource("1_xbt75")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_1hxa8")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("BoxMesh_kdbfp")
+transform = Transform3D(50, 0, 0, 0, -2.18557e-06, 50, 0, -50, -2.18557e-06, 0, 0, 0)
+mesh = ExtResource("2_8wsfm")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

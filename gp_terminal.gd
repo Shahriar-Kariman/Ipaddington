@@ -1,6 +1,6 @@
 extends Node3D
 signal reload
-
+var inReloadZone = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -9,5 +9,17 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if Input.is_action_just_pressed("reload"):
-		if $TerminalArea.inReloadZone:
+		if inReloadZone:
 			reload.emit()
+
+
+func _on_terminal_area_body_entered(body):
+	print(body.name)
+	if body.name == "Player":
+		inReloadZone = true
+
+
+func _on_terminal_area_body_exited(body):
+	print(body.name)
+	if body.name == "Player":
+		inReloadZone = false

@@ -23,7 +23,9 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	if health == 0:
-		enemyDead.emit()
+		enemyDead.emit(self)
+		health = 3
+		$EnemyDeath.play()
 		
 	if not is_on_floor():
 		velocity.y -= gravity * delta
@@ -45,8 +47,8 @@ func _physics_process(delta):
 	move_and_slide()
 
 func _on_area_3d_area_entered(area):
-	if area.name == "Projectile":
+		enemyHit.emit(self)
 		health -= 1
-		enemyHit.emit()
+		area.queue_free()
 		
 	
