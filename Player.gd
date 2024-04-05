@@ -33,7 +33,7 @@ func _physics_process(delta):
 		SPEED = 10
 	if Input.is_action_just_released("move_run"):
 		SPEED = 5
-	if Input.is_action_just_pressed("gun_shoot"):
+	if Input.is_action_just_pressed("gun_shoot") and bulletsLeft>0:
 		shoot()
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
@@ -69,7 +69,7 @@ func _physics_process(delta):
 	
 	if not intersection.is_empty():
 		var pos = intersection.position
-		look_at(pos)
+		$pivot.look_at(pos)
 		rotation.x = 0
 		rotation.z = 0
 	

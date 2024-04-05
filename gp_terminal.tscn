@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://gdf323pxnn7" path="res://free_terminal_2/sketchfab_scene.tscn" id="3_veppk"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_q1qw7"]
-size = Vector3(3, 2, 1.6)
+size = Vector3(6, 2, 5)
 
 [node name="GPTerminal" type="Node3D"]
 script = ExtResource("1_bnx1a")

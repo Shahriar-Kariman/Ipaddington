@@ -3,10 +3,3 @@
 [ext_resource type="PackedScene" uid="uid://ctwmk077stuyg" path="res://Animations/gltf/KayKit_AnimatedCharacter_v1.2.glb" id="1_mc0eu"]
 
 [node name="KayKit Animated Character2" instance=ExtResource("1_mc0eu")]
-
-[node name="Skeleton3D" parent="KayKit Animated Character" index="0"]
-bones/1/rotation = Quaternion(0.044548, -7.76252e-26, -9.89164e-18, 0.999007)
-bones/2/rotation = Quaternion(-0.685863, -0.172023, 0.685863, -0.172022)
-bones/3/rotation = Quaternion(0.606617, -0.606617, 0.36334, 0.36334)
-bones/4/rotation = Quaternion(-0.705107, 0.285918, 0.646723, 0.0531368)
-bones/5/rotation = Quaternion(0.300506, -0.376591, 0.679877, 0.55285)
