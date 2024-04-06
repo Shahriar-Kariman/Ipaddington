@@ -1,10 +1,14 @@
-[gd_scene load_steps=12 format=3 uid="uid://dukqmi0i8fun4"]
+[gd_scene load_steps=18 format=3 uid="uid://dukqmi0i8fun4"]
 
 [ext_resource type="Script" path="res://level_3.gd" id="1_hbhcw"]
 [ext_resource type="PackedScene" uid="uid://bggbrc0a5hlp" path="res://player.tscn" id="2_384yq"]
+[ext_resource type="PackedScene" uid="uid://ljlbngl52blv" path="res://Tv1.glb" id="3_fqfix"]
+[ext_resource type="Script" path="res://Tv1.gd" id="4_61y2c"]
+[ext_resource type="PackedScene" uid="uid://b8o7ip16jevt8" path="res://ShieldTurret.glb" id="5_7bbta"]
+[ext_resource type="AudioStream" uid="uid://c7or33k22g67n" path="res://we-are-family-ringtone.mp3" id="6_b23ed"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_osxmu"]
-size = Vector3(60, 0.5, 40)
+size = Vector3(200, 0.5, 200)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_etsd0"]
 albedo_color = Color(0.054902, 0.054902, 0.054902, 1)
@@ -24,11 +28,6 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	#smoother camera movement
-	var distance = Vector3(player.position.x - position.x,0,player.position.z - position.z + 5)
-	var velocity = Vector3(distance.x * speed, 0, distance.z * speed)
-	position += Vector3(velocity.x * delta, 0, velocity.z * delta)
-	position.x = clamp(position.x,-3,3)
-	position.z = clamp(position.z,0,12)
 	pass
 "
 
@@ -52,16 +51,23 @@ size = Vector3(30, 10, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_4nxoe"]
 size = Vector3(1, 10, 22)
 
+[sub_resource type="SystemFont" id="SystemFont_7v8jt"]
+font_names = PackedStringArray("Nimbus Mono PS")
+font_weight = 600
+
+[sub_resource type="LabelSettings" id="LabelSettings_itp76"]
+font = SubResource("SystemFont_7v8jt")
+font_size = 32
+
 [node name="Level3" type="Node3D"]
 script = ExtResource("1_hbhcw")
-player = ExtResource("2_384yq")
 
 [node name="Ground_2" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_osxmu")
 surface_material_override/0 = SubResource("StandardMaterial3D_etsd0")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, 0, 15, 5)
+transform = Transform3D(1, 0, 0, 0, 0.642788, 0.766045, 0, -0.766045, 0.642788, 0, 8, 7)
 far = 100.0
 script = SubResource("GDScript_bkep7")
 
@@ -122,3 +128,38 @@ shape = SubResource("BoxShape3D_kxku4")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 10, 0)
 shadow_enabled = true
+
+[node name="Tv1" parent="." instance=ExtResource("3_fqfix")]
+transform = Transform3D(-3.0598e-08, -0.7, 0, 0.7, -3.0598e-08, 0, 0, 0, 0.7, 0, 5, 0)
+script = ExtResource("4_61y2c")
+
+[node name="Player" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("2_384yq")]
+camera = NodePath("../Camera3D")
+
+[node name="ShieldTurret" parent="." instance=ExtResource("5_7bbta")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="ShieldTurret"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 3.32042, 0.116389)
+light_color = Color(0.188235, 1, 1, 1)
+light_energy = 5.0
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 0
+offset_top = 488.0
+offset_right = 1154.0
+offset_bottom = 546.0
+text = "YOU WON!!!"
+label_settings = SubResource("LabelSettings_itp76")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Lvl3Background" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_b23ed")
+autoplay = true

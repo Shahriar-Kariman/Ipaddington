@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dlw3gm18htgoe"
+path="res://.godot/imported/narration 3.mp3-8721969b5c1c9bbeefe0ce6ea650fa2e.mp3str"
+
+[deps]
+
+source_file="res://narration 3.mp3"
+dest_files=["res://.godot/imported/narration 3.mp3-8721969b5c1c9bbeefe0ce6ea650fa2e.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

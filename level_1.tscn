@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://1u0kf1wkojvd"]
+[gd_scene load_steps=28 format=3 uid="uid://1u0kf1wkojvd"]
 
 [ext_resource type="PackedScene" uid="uid://bggbrc0a5hlp" path="res://player.tscn" id="1_jw5dv"]
 [ext_resource type="Script" path="res://level_1.gd" id="1_xu0mp"]
@@ -15,6 +15,16 @@
 [ext_resource type="Script" path="res://Label2.gd" id="10_o7cmr"]
 [ext_resource type="AudioStream" uid="uid://c0nvjaqvajchq" path="res://stranger-things-124008.mp3" id="12_yyj28"]
 [ext_resource type="AudioStream" uid="uid://edlxtme6rbcg" path="res://eating-sound-effect-36186.mp3" id="13_uw7ho"]
+
+[sub_resource type="Environment" id="Environment_52j1g"]
+fog_enabled = true
+fog_light_energy = 0.5
+volumetric_fog_density = 0.03
+volumetric_fog_albedo = Color(0, 0, 0, 1)
+volumetric_fog_emission = Color(1, 1, 1, 1)
+volumetric_fog_emission_energy = 0.3
+volumetric_fog_temporal_reprojection_enabled = false
+volumetric_fog_temporal_reprojection_amount = 0.5
 
 [sub_resource type="GDScript" id="GDScript_qqlae"]
 script/source = "extends Camera3D
@@ -47,7 +57,7 @@ polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(5, 4, 3), PackedInt32Arr
 size = Vector3(30, 1, 20)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_it70o"]
-albedo_color = Color(0.67451, 0.72549, 0.713726, 1)
+albedo_color = Color(0.537255, 0.596078, 0.584314, 1)
 metallic = 1.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wyent"]
@@ -82,11 +92,13 @@ wall = ExtResource("5_2vbxf")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 10, 0)
 shadow_enabled = true
+shadow_bias = 1.0
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, 0, 15, 5)
+environment = SubResource("Environment_52j1g")
 current = true
-far = 100.0
+fov = 68.0
 script = SubResource("GDScript_qqlae")
 
 [node name="Pickup" parent="." instance=ExtResource("2_qdsll")]

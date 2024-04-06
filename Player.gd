@@ -20,7 +20,7 @@ var rayOrigin = Vector3()
 var rayEnd = Vector3()
 
 func _ready():
-	bulletsLeft = clipSize
+	pass#bulletsLeft = clipSize
 	
 func _physics_process(delta):
 	if health == 0:
@@ -30,6 +30,7 @@ func _physics_process(delta):
 		$PlayerDeath.play()
 	if lives == 0:
 		playerDead.emit(self)
+		lives = -1
 		
 	if not is_on_floor():
 		velocity.y -= gravity * delta
@@ -106,3 +107,12 @@ func handleCollisions():
 func _reload():
 	bulletsLeft = clipSize
 	$Reload.play()
+
+
+
+func _on_player_area_entered(area):
+	if area.is_in_group("EnemyBullet"):
+		health -= 1
+		area.queue_free()
+		$PlayerHit.play()
+		playerHit.emit(health)

@@ -1,29 +1,44 @@
-[gd_scene load_steps=15 format=3 uid="uid://luadakbwo10w"]
+[gd_scene load_steps=28 format=3 uid="uid://luadakbwo10w"]
 
 [ext_resource type="Script" path="res://level_2.gd" id="1_58mfs"]
 [ext_resource type="PackedScene" uid="uid://bggbrc0a5hlp" path="res://player.tscn" id="1_d83k6"]
 [ext_resource type="AudioStream" uid="uid://0squllvk64wy" path="res://gloomy-and-sinister-for-video-game-trailers-165985.mp3" id="3_3dy0m"]
+[ext_resource type="PackedScene" uid="uid://cdflikg1xodxm" path="res://enemy_sniper.tscn" id="4_0wrwh"]
+[ext_resource type="PackedScene" uid="uid://cvblhymat0ksy" path="res://gp_terminal.tscn" id="5_yt201"]
+[ext_resource type="PackedScene" uid="uid://bnvx8kxtd8qg8" path="res://boss.tscn" id="6_fe02e"]
+[ext_resource type="Script" path="res://boss.gd" id="7_6ocwg"]
+[ext_resource type="AudioStream" uid="uid://bnu5am83hxb8g" path="res://squid-game-doll-music.mp3" id="8_gxeqm"]
+[ext_resource type="AudioStream" uid="uid://b2te48cjhdw57" path="res://robot-damaged-36712.mp3" id="8_hetxh"]
+[ext_resource type="Script" path="res://BulletLabel.gd" id="10_7kkvd"]
+[ext_resource type="Script" path="res://PlayerHealth.gd" id="11_7asrg"]
+[ext_resource type="Script" path="res://PlayerLives.gd" id="12_8j1g0"]
+[ext_resource type="AudioStream" uid="uid://8w7r2shgok5n" path="res://explosion-42132.mp3" id="13_7xk6e"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_i5jan"]
-size = Vector3(30, 1, 20)
+size = Vector3(50, 1, 35)
 
 [sub_resource type="BoxMesh" id="BoxMesh_x3xf0"]
-size = Vector3(30, 1, 20)
+size = Vector3(50, 1, 35)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vwtbx"]
-albedo_color = Color(0.757162, 0.780914, 0.287346, 1)
+albedo_color = Color(0.333333, 0.333333, 0.333333, 1)
+metallic = 0.5
+metallic_specular = 0.67
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nxd66"]
+size = Vector3(300, 0.9, 150)
 
 [sub_resource type="BoxMesh" id="BoxMesh_yenmi"]
-size = Vector3(60, 0.9, 40)
+size = Vector3(300, 0.9, 150)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ijwws"]
 albedo_color = Color(0, 0, 0, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0xvru"]
-size = Vector3(30, 10, 1)
+size = Vector3(50, 2, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_m24je"]
-size = Vector3(1, 10, 22)
+size = Vector3(1, 2, 37)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_5q7ur"]
 
@@ -37,7 +52,7 @@ script/source = "extends Camera3D
 
 var velocityx
 var velocityz
-var speed = 2
+var speed = 3
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -46,11 +61,12 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	#smoother camera movement
-	var distance = Vector3(player.position.x - position.x,0,player.position.z - position.z + 5)
+	var distance = Vector3(player.position.x - position.x,0,player.position.z - position.z + 15)
 	var velocity = Vector3(distance.x * speed, 0, distance.z * speed)
 	position += Vector3(velocity.x * delta, 0, velocity.z * delta)
-	position.x = clamp(position.x,-3,3)
-	position.z = clamp(position.z,0,12)
+	position.x = clamp(position.x,-18,18)
+	position.z = clamp(position.z,-25,25)
+	look_at($\"../Player\".position)
 	pass
 "
 
@@ -73,6 +89,13 @@ func _process(delta):
 	look_at(player.position)
 "
 
+[sub_resource type="LabelSettings" id="LabelSettings_ywyvu"]
+font_color = Color(1, 0, 0, 1)
+outline_size = 2
+outline_color = Color(1, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_rixtp"]
+
 [node name="Level2" type="Node3D"]
 script = ExtResource("1_58mfs")
 
@@ -85,6 +108,9 @@ shape = SubResource("BoxShape3D_i5jan")
 mesh = SubResource("BoxMesh_x3xf0")
 surface_material_override/0 = SubResource("StandardMaterial3D_vwtbx")
 
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Ground"]
+shape = SubResource("BoxShape3D_nxd66")
+
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="Ground"]
 mesh = SubResource("BoxMesh_yenmi")
 surface_material_override/0 = SubResource("StandardMaterial3D_ijwws")
@@ -92,19 +118,19 @@ surface_material_override/0 = SubResource("StandardMaterial3D_ijwws")
 [node name="WorldBorder" type="StaticBody3D" parent="Ground"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground/WorldBorder"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.5, 10.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 18)
 shape = SubResource("BoxShape3D_0xvru")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Ground/WorldBorder"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.5, 4.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.5, 0, 0)
 shape = SubResource("BoxShape3D_m24je")
 
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="Ground/WorldBorder"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.5, -10.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -18)
 shape = SubResource("BoxShape3D_0xvru")
 
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="Ground/WorldBorder"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 4.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.5, 0, 0)
 shape = SubResource("BoxShape3D_m24je")
 
 [node name="Player" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("1_d83k6")]
@@ -116,8 +142,9 @@ camera = NodePath("../Camera3D")
 shape = SubResource("CylinderShape3D_5q7ur")
 
 [node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("player")]
-transform = Transform3D(1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, 0, 15, 5)
+transform = Transform3D(1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, 0, 15, 0)
 environment = SubResource("Environment_ycaa7")
+fov = 90.0
 far = 100.0
 script = SubResource("GDScript_0tafi")
 player = NodePath("../Player")
@@ -134,6 +161,14 @@ spot_angle_attenuation = 0.258816
 script = SubResource("GDScript_qjulm")
 player = NodePath("../Player")
 
+[node name="EnemySpotLight" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 20, 0)
+light_color = Color(1, 0, 0, 1)
+light_energy = 25.0
+spot_range = 40.0
+spot_attenuation = 0.707107
+spot_angle = 10.0
+
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 20, 0)
 light_energy = 0.25
@@ -143,3 +178,88 @@ light_negative = true
 [node name="Lvl2Background" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_3dy0m")
 autoplay = true
+
+[node name="EnemySniper" parent="." instance=ExtResource("4_0wrwh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0.5, 13)
+
+[node name="EnemySniper2" parent="." instance=ExtResource("4_0wrwh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0.5, -12)
+
+[node name="EnemySniper3" parent="." instance=ExtResource("4_0wrwh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0.5, 12)
+
+[node name="EnemySniper4" parent="." instance=ExtResource("4_0wrwh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0.5, -12)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[node name="GPTerminal" parent="." instance=ExtResource("5_yt201")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.124922, 0.5, -1.32767)
+
+[node name="Boss" parent="." instance=ExtResource("6_fe02e")]
+transform = Transform3D(-40, 0, -3.49691e-06, 0, 40, 0, 3.49691e-06, 0, -40, 3, -40, -30)
+script = ExtResource("7_6ocwg")
+
+[node name="BossDeath" type="AudioStreamPlayer3D" parent="Boss"]
+transform = Transform3D(-0.025, 0, 2.18557e-09, 0, 0.025, 0, -2.18557e-09, 0, -0.025, 0.0750001, 1, -0.75)
+stream = ExtResource("8_hetxh")
+
+[node name="OpeningTheme" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_gxeqm")
+autoplay = true
+
+[node name="UserInterface" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1150.0
+offset_bottom = 650.0
+
+[node name="BulletLabel" type="Label" parent="UserInterface"]
+layout_mode = 0
+offset_right = 67.0
+offset_bottom = 26.0
+text = "Bullets:"
+script = ExtResource("10_7kkvd")
+
+[node name="PlayerHealth" type="Label" parent="UserInterface"]
+layout_mode = 0
+offset_left = 245.0
+offset_right = 317.0
+offset_bottom = 26.0
+label_settings = SubResource("LabelSettings_ywyvu")
+script = ExtResource("11_7asrg")
+
+[node name="PlayerLives" type="Label" parent="UserInterface"]
+layout_mode = 0
+offset_left = 325.0
+offset_right = 450.0
+offset_bottom = 26.0
+text = "Lives Left: "
+script = ExtResource("12_8j1g0")
+
+[node name="Label" type="Label" parent="UserInterface"]
+layout_mode = 0
+offset_left = 150.0
+offset_right = 240.0
+offset_bottom = 26.0
+text = "Health Left:"
+label_settings = SubResource("LabelSettings_rixtp")
+
+[node name="SniperDeath" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_7xk6e")
+volume_db = -15.0
+
+[connection signal="playerDead" from="Player" to="." method="_on_player_player_dead"]
+[connection signal="playerHit" from="Player" to="UserInterface/PlayerHealth" method="on_player_hit"]
+[connection signal="playerLifeLost" from="Player" to="UserInterface/PlayerLives" method="_on_player_health_life_lost"]
+[connection signal="playerShoot" from="Player" to="UserInterface/BulletLabel" method="playerShoot"]
+[connection signal="enemySniperDead" from="EnemySniper" to="." method="on_sniper_dead"]
+[connection signal="enemySniperDead" from="EnemySniper2" to="." method="on_sniper_dead"]
+[connection signal="enemySniperDead" from="EnemySniper3" to="." method="on_sniper_dead"]
+[connection signal="enemySniperDead" from="EnemySniper4" to="." method="on_sniper_dead"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="reload" from="GPTerminal" to="Player" method="_reload"]
+[connection signal="reload" from="GPTerminal" to="UserInterface/BulletLabel" method="reload"]
+[connection signal="finished" from="Boss/BossDeath" to="." method="_on_boss_death_finished"]

@@ -1,31 +1,33 @@
 extends CharacterBody3D
 signal enemy_shoot
-@export var inPlayerRange: bool
-
+@export var enemyBullet : PackedScene
+var shooting : bool
+var health = 5
+signal enemySniperDead
 func _ready():
-	$ShootTimer.autostart = false
-	inPlayerRange = false
-	
-
-func _process(delta):
 	pass
 
+func _process(delta):
+	if health == 0:
+		visible = false
+		$"../SniperDeath".play()
+		enemySniperDead.emit(self)
+		health = -1
+		#queue_free()
+
 func _physics_process(delta):
-	if inPlayerRange:
-		$ShootTimer.start()
-	else:
-		#moveRandomly()
-		pass
+	get_node("Pivot").look_at(Vector3($"../Player".position.x,position.y,$"../Player".position.z))
 
-
-
-func _on_shoot_timer_timeout():
+func shoot():
+	var enemyShot = enemyBullet.instantiate()
+	enemyShot.position = Vector3(position.x, 2, position.z)
+	enemyShot.rotation = get_node("Pivot").rotation
+	add_sibling(enemyShot)
+	#$GunShotSound.play()
 	enemy_shoot.emit()
 
 
 func _on_enemy_sniper_area_area_entered(area):
-	if area.name == "SpotlightArea":
-		inPlayerRange = true
-		
-func moveRandomly():
-	pass
+	if area.is_in_group("Projectile"):
+		health -= 1
+		area.queue_free()

@@ -44,5 +44,10 @@ shape = SubResource("BoxShape3D_mrgub")
 stream = ExtResource("3_1l0kr")
 volume_db = 40.0
 
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.62466, -0.090025)
+light_color = Color(1, 1, 0.282353, 1)
+light_energy = 10.0
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

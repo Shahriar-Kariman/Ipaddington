@@ -14,12 +14,10 @@ func _process(delta):
 
 
 func _on_terminal_area_body_entered(body):
-	print(body.name)
 	if body.name == "Player":
 		inReloadZone = true
 
 
 func _on_terminal_area_body_exited(body):
-	print(body.name)
 	if body.name == "Player":
 		inReloadZone = false

@@ -18,4 +18,9 @@ shape = SubResource("BoxShape3D_1hxa8")
 transform = Transform3D(50, 0, 0, 0, -2.18557e-06, 50, 0, -50, -2.18557e-06, 0, 0, 0)
 mesh = ExtResource("2_8wsfm")
 
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+light_color = Color(1, 1, 0.34902, 1)
+light_energy = 2.981
+omni_range = 1.5
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

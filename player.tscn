@@ -31,7 +31,7 @@ shape = SubResource("CapsuleShape3D_kikha")
 
 [node name="Player" type="Area3D" parent="." groups=["Player"]]
 collision_layer = 4
-collision_mask = 491
+collision_mask = 1003
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
 shape = SubResource("CapsuleShape3D_kikha")
@@ -56,3 +56,5 @@ volume_db = 40.0
 stream = ExtResource("8_lue30")
 volume_db = 40.0
 max_db = 6.0
+
+[connection signal="area_entered" from="Player" to="." method="_on_player_area_entered"]

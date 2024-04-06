@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://dtr48hfcctaj6"]
+
+[ext_resource type="Script" path="res://enemy_bullet.gd" id="1_6iywq"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_v8oro"]
+size = Vector3(0.5, 0.5, 1.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3r3t3"]
+albedo_color = Color(0.137255, 1, 1, 1)
+emission_enabled = true
+emission = Color(0.141176, 0.811765, 0.827451, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_hh4s7"]
+material = SubResource("StandardMaterial3D_3r3t3")
+size = Vector3(0.2, 0.2, 1.5)
+
+[node name="EnemyBullet" type="Area3D" groups=["EnemyBullet"]]
+collision_layer = 512
+collision_mask = 4
+script = ExtResource("1_6iywq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_v8oro")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_hh4s7")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 6.0
+one_shot = true
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+light_color = Color(0.239216, 1, 1, 1)
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

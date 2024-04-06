@@ -19,7 +19,11 @@ func _ready():
 	#await get_tree().process_frame
 	player = get_tree().get_first_node_in_group("Player")
 
-
+func _process(delta):
+	if !$Walking.playing:
+		$Walking.play()
+	else:
+		pass
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	if health == 0:
@@ -47,6 +51,7 @@ func _physics_process(delta):
 	move_and_slide()
 
 func _on_area_3d_area_entered(area):
+	if area.is_in_group("Projectile"):
 		enemyHit.emit(self)
 		health -= 1
 		area.queue_free()

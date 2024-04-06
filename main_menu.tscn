@@ -1,10 +1,24 @@
-[gd_scene load_steps=3 format=3 uid="uid://53uxtpgxaw61"]
+[gd_scene load_steps=12 format=3 uid="uid://53uxtpgxaw61"]
 
 [ext_resource type="Script" path="res://main_menu.gd" id="1_ll1cs"]
+[ext_resource type="AudioStream" uid="uid://0khrqpmpnfym" path="res://narration 1.mp3" id="2_pg4at"]
+[ext_resource type="AudioStream" uid="uid://xmstikeii4k6" path="res://narration 2.mp3" id="3_deyqh"]
+[ext_resource type="AudioStream" uid="uid://dlw3gm18htgoe" path="res://narration 3.mp3" id="4_vanqk"]
+[ext_resource type="AudioStream" uid="uid://de18vb4jot0a7" path="res://narration 4.mp3" id="5_ber0h"]
+[ext_resource type="AudioStream" uid="uid://clpobpexaq2to" path="res://narration 5.mp3" id="6_6a6f8"]
+[ext_resource type="AudioStream" uid="uid://dgq51hyfn5sy0" path="res://narration 6.mp3" id="7_visky"]
+[ext_resource type="AudioStream" uid="uid://vm3dorjvkjj2" path="res://narration7.mp3" id="8_wj6xj"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_0iuyy"]
 font_size = 32
-font_color = Color(0.25098, 0.521569, 0.647059, 1)
+font_color = Color(1, 0, 0.0117647, 1)
+
+[sub_resource type="SystemFont" id="SystemFont_7v8jt"]
+font_names = PackedStringArray("Nimbus Mono PS")
+font_weight = 600
+
+[sub_resource type="LabelSettings" id="LabelSettings_7bm32"]
+font = SubResource("SystemFont_7v8jt")
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -15,48 +29,128 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ll1cs")
 
-[node name="PanelContainer" type="PanelContainer" parent="."]
+[node name="StartMenu" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="PanelContainer" type="PanelContainer" parent="StartMenu"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -94.5
-offset_top = -22.5
-offset_right = 94.5
-offset_bottom = 22.5
+offset_left = 426.0
+offset_top = 218.0
+offset_right = 686.0
+offset_bottom = 390.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="StartMenu/PanelContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 12
 theme_override_constants/margin_top = 12
 theme_override_constants/margin_right = 12
 theme_override_constants/margin_bottom = 12
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="StartMenu/PanelContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="Title" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
+[node name="Title" type="Label" parent="StartMenu/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Ipaddington"
 label_settings = SubResource("LabelSettings_0iuyy")
 horizontal_alignment = 1
 
-[node name="subTitle" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
+[node name="subTitle" type="Label" parent="StartMenu/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "The realm of seamless screens"
 horizontal_alignment = 1
 
-[node name="PlayButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
+[node name="PlayButton" type="Button" parent="StartMenu/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Play"
 
-[node name="Exit Button" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
+[node name="Exit Button" type="Button" parent="StartMenu/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Exit"
 
-[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
-[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/Exit Button" to="." method="_on_exit_button_pressed"]
+[node name="Label" type="Label" parent="StartMenu"]
+layout_mode = 0
+offset_left = 39.0
+offset_top = 39.0
+offset_right = 346.0
+offset_bottom = 172.0
+text = "             KEYS
+
+movement: \"WASD\" & Arrow Keys
+Sprint: \"Shift\"
+Reload: \"R\" when near GPTerminal
+Shoot: \"Left Mouse Click\"
+"
+label_settings = SubResource("LabelSettings_7bm32")
+
+[node name="Narration" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_pg4at")
+
+[node name="Narration2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_deyqh")
+
+[node name="Narration3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_vanqk")
+
+[node name="Narration4" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_ber0h")
+
+[node name="Narration5" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_6a6f8")
+
+[node name="Narration6" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_visky")
+
+[node name="Narration7" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_wj6xj")
+
+[node name="NarrationControl" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 1150.0
+offset_bottom = 640.0
+
+[node name="SkipLabel" type="Label" parent="NarrationControl"]
+layout_mode = 2
+offset_left = 485.0
+offset_top = 545.0
+offset_right = 661.0
+offset_bottom = 565.0
+text = "Press \"P\" to skip"
+label_settings = SubResource("LabelSettings_7bm32")
+
+[node name="NarrationLabel" type="Label" parent="NarrationControl"]
+layout_mode = 2
+offset_left = 56.0
+offset_top = 107.0
+offset_right = 1104.0
+offset_bottom = 407.0
+text = "In the year 3024, you find yourself waking up in a dark maze in Ipaddington, feeling puzzled about where your iPad went. As you walk through the maze, you hear the whirring of mechanical footsteps approaching. Godot bots, robot enemies programmed to destroy you, emerge from the shadows. They're relentless, and you know you'll have to fight to survive. But there's a surprising twist, a friendly yellow robot offers you chicken nuggets.
+	
+You decide to munch on the chicken nuggets to keep your energy up. With each nugget you eat, you feel more determined to find your iPad. To move on to the next level and locate your lost device, you need to eat five nuggets. 
+
+The maze stays the same, but the chicken nuggets pickables move around, making it tricky to find them. Meanwhile, the Godot bots keep coming back, even after you've defeated them. But you're not deterred. With your trusty gun in hand and the memory of those tasty chicken nuggets driving you forward, you're determined to succeed. 
+
+As you navigate the maze, you stumble upon GPT terminals scattered around. These terminals help you reload your gun ammo, ensuring you're always ready to face the Godot bots. With each reload, you feel more prepared to tackle the challenges ahead.Armed with your gun, fueled by chicken nuggets, and supported by the GPT terminals, you press on. 	You're ready to face whatever challenges come your way and reclaim your missing iPad in level two.\"
+	"
+label_settings = SubResource("LabelSettings_7bm32")
+autowrap_mode = 3
+
+[connection signal="pressed" from="StartMenu/PanelContainer/MarginContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="StartMenu/PanelContainer/MarginContainer/VBoxContainer/Exit Button" to="." method="_on_exit_button_pressed"]
+[connection signal="finished" from="Narration" to="." method="_on_narration_finished"]
+[connection signal="finished" from="Narration2" to="." method="_on_narration_2_finished"]
+[connection signal="finished" from="Narration3" to="." method="_on_narration_3_finished"]
+[connection signal="finished" from="Narration4" to="." method="_on_narration_4_finished"]
+[connection signal="finished" from="Narration5" to="." method="_on_narration_5_finished"]
+[connection signal="finished" from="Narration6" to="." method="_on_narration_6_finished"]
+[connection signal="finished" from="Narration7" to="." method="_on_narration_7_finished"]
