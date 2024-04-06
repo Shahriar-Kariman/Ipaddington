@@ -1,4 +1,4 @@
-extends Node
+extends Node3D
 
 @export var pickupTemplate: PackedScene
 @export var player: PackedScene
@@ -73,6 +73,8 @@ func _on_pickup_caught_pickup():
 	
 	pickup.position.x = (randf() * groundSize.x) - groundSize.x/2
 	pickup.position.z = (randf() * groundSize.z) - groundSize.z/2
+	pickup.position = NavigationServer3D.map_get_closest_point(get_world_3d().get_navigation_map(),pickup.position)
+	pickup.position.y = 0
 	pickup.caught_Pickup.connect(_on_pickup_caught_pickup)
 	pickup.caught_Pickup.connect($UserInterface/PickupLabel._on_pickup_caught_pickup)
 	print(pickup.position.x)
