@@ -80,8 +80,9 @@ func _on_pickup_caught_pickup():
 	add_child(pickup) #adds as a child ourselves
 
 func on_enemy_dead(from):
-	from.position.x = spawnPoints[randf_range(0,4)].position.x
-	from.position.z = spawnPoints[randf_range(0,4)].position.z
+	var rand_index = randf_range(0,4)
+	from.position.x = spawnPoints[rand_index].position.x
+	from.position.z = spawnPoints[rand_index].position.z
 	
 func on_player_respawn(player,health):
 	player.position.x = $StartPoint.position.x
