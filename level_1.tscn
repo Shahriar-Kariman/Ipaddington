@@ -160,6 +160,10 @@ script = null
 transform = Transform3D(1, 0, 0, 0, 3, 0, 0, 0, 12, -31, 2, -44.31)
 script = null
 
+[node name="Wall15" parent="NavigationRegion3D" instance=ExtResource("5_2vbxf")]
+transform = Transform3D(1, 0, 0, 0, 3, 0, 0, 0, 8.064, 0, 1.825, -42.445)
+script = null
+
 [node name="Wall21" parent="NavigationRegion3D" instance=ExtResource("5_2vbxf")]
 transform = Transform3D(1, 0, 0, 0, 3, 0, 0, 0, 6.039, 12, 1.825, -47.445)
 script = null
