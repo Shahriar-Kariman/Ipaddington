@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://minimap.gd" id="1_1di6m"]
 [ext_resource type="Texture2D" uid="uid://uiuakvfj3xu7" path="res://hollow_circle.png" id="1_8civp"]
-[ext_resource type="Texture2D" uid="uid://byeah2efia4ml" path="res://icon.svg" id="3_4u1ep"]
+[ext_resource type="Texture2D" uid="uid://byo0wbfdweuva" path="res://icon.svg" id="3_4u1ep"]
 [ext_resource type="Texture2D" uid="uid://dlh87qiauk3hj" path="res://terminal.png" id="4_6jklq"]
 [ext_resource type="Texture2D" uid="uid://ddtny6ig8jo36" path="res://arrow.png" id="5_eaf5r"]
 
@@ -15,10 +15,11 @@ _surfaces = [{
 "2d": true,
 "aabb": AABB(-64, -64, 0, 128, 128, 0),
 "attribute_data": PackedByteArray(0, 0, 128, 63, 205, 204, 12, 61, 0, 0, 128, 63, 0, 0, 118, 63, 51, 51, 119, 63, 0, 0, 128, 63, 0, 0, 32, 61, 0, 0, 128, 63, 0, 0, 0, 0, 51, 51, 119, 63, 0, 0, 0, 0, 205, 204, 12, 61, 0, 0, 32, 61, 205, 204, 76, 58, 0, 0, 118, 63, 0, 0, 0, 0),
-"format": 33558545,
+"format": 34393296913,
 "index_count": 18,
 "index_data": PackedByteArray(7, 0, 0, 0, 1, 0, 1, 0, 2, 0, 3, 0, 3, 0, 4, 0, 5, 0, 5, 0, 6, 0, 7, 0, 7, 0, 1, 0, 3, 0, 3, 0, 5, 0, 7, 0),
 "primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
 "vertex_count": 8,
 "vertex_data": PackedByteArray(0, 0, 128, 66, 102, 102, 110, 194, 0, 0, 128, 66, 0, 0, 108, 66, 102, 102, 110, 66, 0, 0, 128, 66, 0, 0, 108, 194, 0, 0, 128, 66, 0, 0, 128, 194, 102, 102, 110, 66, 0, 0, 128, 194, 102, 102, 110, 194, 0, 0, 108, 194, 154, 153, 127, 194, 0, 0, 108, 66, 0, 0, 128, 194)
 }]
@@ -28,10 +29,11 @@ _surfaces = [{
 "2d": true,
 "aabb": AABB(-40, -40.1, 0, 80, 78.1, 0),
 "attribute_data": PackedByteArray(171, 170, 106, 63, 120, 119, 215, 61, 171, 170, 106, 63, 85, 85, 101, 63, 171, 170, 170, 61, 85, 85, 101, 63, 171, 170, 170, 61, 103, 102, 230, 61, 85, 85, 213, 61, 17, 17, 209, 61, 85, 85, 213, 61, 137, 136, 168, 61),
-"format": 33558545,
+"format": 34393296913,
 "index_count": 12,
 "index_data": PackedByteArray(5, 0, 0, 0, 1, 0, 1, 0, 2, 0, 3, 0, 4, 0, 5, 0, 1, 0, 1, 0, 3, 0, 4, 0),
 "primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
 "vertex_count": 6,
 "vertex_data": PackedByteArray(0, 0, 32, 66, 154, 153, 23, 194, 0, 0, 32, 66, 0, 0, 24, 66, 0, 0, 32, 194, 0, 0, 24, 66, 0, 0, 32, 194, 205, 204, 20, 194, 0, 0, 24, 194, 205, 204, 24, 194, 0, 0, 24, 194, 102, 102, 32, 194)
 }]
