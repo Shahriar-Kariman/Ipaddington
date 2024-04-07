@@ -25,6 +25,7 @@ func shoot():
 	add_sibling(enemyShot)
 	#$GunShotSound.play()
 	enemy_shoot.emit()
+	$Shoot.play()
 
 
 func _on_enemy_sniper_area_area_entered(area):

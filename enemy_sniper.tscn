@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cdflikg1xodxm"]
+[gd_scene load_steps=6 format=3 uid="uid://cdflikg1xodxm"]
 
 [ext_resource type="Script" path="res://CharacterBody3D.gd" id="1_uo5x8"]
 [ext_resource type="PackedScene" uid="uid://dtr48hfcctaj6" path="res://enemy_bullet.tscn" id="2_uy25m"]
 [ext_resource type="PackedScene" uid="uid://dpuuiquoigdkl" path="res://RailGunTurret.glb" id="3_mmnma"]
+[ext_resource type="AudioStream" uid="uid://cxs5csmgjn7d8" path="res://beam-8-43831.mp3" id="4_3tqos"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_v4j6r"]
 size = Vector3(4, 4, 4)
@@ -42,6 +43,9 @@ collision_mask = 20
 [node name="Body2" type="CollisionShape3D" parent="EnemySniperArea"]
 transform = Transform3D(0.999942, -0.00961651, -0.00478218, 0.00961662, 0.999954, 0, 0.00478196, -4.59884e-05, 0.999989, 0.0135872, 0.49427, 0.0132186)
 shape = SubResource("BoxShape3D_v4j6r")
+
+[node name="Shoot" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("4_3tqos")
 
 [connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]
 [connection signal="area_entered" from="EnemySniperArea" to="." method="_on_enemy_sniper_area_area_entered"]
