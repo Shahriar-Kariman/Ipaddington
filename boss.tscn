@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://bnvx8kxtd8qg8"]
+[gd_scene load_steps=4 format=3 uid="uid://bnvx8kxtd8qg8"]
 
+[ext_resource type="Script" path="res://boss.gd" id="1_3phu3"]
 [ext_resource type="PackedScene" uid="uid://bx14nlhnferb7" path="res://3d_godot_robot.tscn" id="1_jvew7"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_6p3l8"]
@@ -7,6 +8,7 @@
 [node name="Boss" type="CharacterBody3D"]
 collision_layer = 8
 collision_mask = 20
+script = ExtResource("1_3phu3")
 
 [node name="pivot" type="Node3D" parent="."]
 
@@ -44,3 +46,8 @@ spot_angle = 15.0
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.30493, 0)
 shape = SubResource("SphereShape3D_6p3l8")
+
+[node name="Dying" type="Timer" parent="."]
+wait_time = 0.3
+
+[connection signal="timeout" from="Dying" to="." method="_on_dying_timeout"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://luadakbwo10w"]
+[gd_scene load_steps=27 format=3 uid="uid://luadakbwo10w"]
 
 [ext_resource type="Script" path="res://level_2.gd" id="1_58mfs"]
 [ext_resource type="PackedScene" uid="uid://bggbrc0a5hlp" path="res://player.tscn" id="1_d83k6"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://cdflikg1xodxm" path="res://enemy_sniper.tscn" id="4_0wrwh"]
 [ext_resource type="PackedScene" uid="uid://cvblhymat0ksy" path="res://gp_terminal.tscn" id="5_yt201"]
 [ext_resource type="PackedScene" uid="uid://bnvx8kxtd8qg8" path="res://boss.tscn" id="6_fe02e"]
-[ext_resource type="Script" path="res://boss.gd" id="7_6ocwg"]
 [ext_resource type="AudioStream" uid="uid://bnu5am83hxb8g" path="res://squid-game-doll-music.mp3" id="8_gxeqm"]
 [ext_resource type="AudioStream" uid="uid://b2te48cjhdw57" path="res://robot-damaged-36712.mp3" id="8_hetxh"]
 [ext_resource type="Script" path="res://BulletLabel.gd" id="10_7kkvd"]
@@ -77,6 +76,7 @@ script/source = "extends SpotLight3D
 const followOverhead = 0.5
 const hoverY = 20
 @export var player: CharacterBody3D
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -192,7 +192,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0.5, 12)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0.5, -12)
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 2.0
 autostart = true
 
 [node name="GPTerminal" parent="." instance=ExtResource("5_yt201")]
@@ -200,7 +199,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.124922, 0.5, -1.32767)
 
 [node name="Boss" parent="." instance=ExtResource("6_fe02e")]
 transform = Transform3D(-40, 0, -3.49691e-06, 0, 40, 0, 3.49691e-06, 0, -40, 3, -40, -30)
-script = ExtResource("7_6ocwg")
 
 [node name="BossDeath" type="AudioStreamPlayer3D" parent="Boss"]
 transform = Transform3D(-0.025, 0, 2.18557e-09, 0, 0.025, 0, -2.18557e-09, 0, -0.025, 0.0750001, 1, -0.75)

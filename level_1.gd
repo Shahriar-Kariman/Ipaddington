@@ -5,7 +5,7 @@ extends Node3D
 @export var enemy_1: PackedScene
 @export var wall: PackedScene
 var pickupsLeft = 0
-const PICKUPS_TO_WIN = 5
+const PICKUPS_TO_WIN = 3
 
 var spawnPoints: Array[Marker3D]
 var walls: Array[SceneTree]
@@ -67,9 +67,9 @@ func _on_pickup_caught_pickup():
 	pickupsLeft += 1
 	#set position of pickup to randomly on the ground
 	var groundSize = Vector3.ZERO
-	groundSize.x = 30
+	groundSize.x = 30*4
 	groundSize.y = 1
-	groundSize.z = 20
+	groundSize.z = 20*5
 	
 	pickup.position.x = (randf() * groundSize.x) - groundSize.x/2
 	pickup.position.z = (randf() * groundSize.z) - groundSize.z/2
@@ -90,5 +90,8 @@ func on_player_respawn(player,health):
 	player.position.x = $StartPoint.position.x
 	player.position.z = $StartPoint.position.z
 	
-func on_player_dead():
+func on_player_dead(player):
+	#get_tree().paused = true
+	player.queue_free()
 	get_tree().reload_current_scene()
+	#get_tree().paused = false

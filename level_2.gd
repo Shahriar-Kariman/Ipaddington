@@ -22,6 +22,8 @@ func _process(delta):
 	if sniperArray.is_empty() and !dead:
 		$Boss/BossDeath.play()
 		dead = true
+		$Boss.dead = true
+		$Boss/Dying.start()
 
 func _on_timer_timeout():
 	if !sniperArray.is_empty():

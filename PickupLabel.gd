@@ -1,7 +1,7 @@
 extends Label
 
 var pickupsCaught = 0
-const PICKUPS_TO_WIN = 5
+const PICKUPS_TO_WIN = 3
 signal level1Won
 # Called when the node enters the scene tree for the first time.
 func _ready():
