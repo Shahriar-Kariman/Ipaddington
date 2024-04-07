@@ -7,7 +7,7 @@ var bulletSpeed = 25
 const clipSize = 10
 var bulletsLeft = 10
 var health = 3
-var lives = 1
+var lives = 3
 var dead = false
 signal playerHit
 signal playerDead
