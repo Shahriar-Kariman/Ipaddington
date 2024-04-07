@@ -24,6 +24,8 @@ func _process(delta):
 		dead = true
 		$Boss.dead = true
 		$Boss/Dying.start()
+		$Camera3D.bossDead = true
+		$Camera3D.speed = 1
 
 func _on_timer_timeout():
 	if !sniperArray.is_empty():

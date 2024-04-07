@@ -52,20 +52,32 @@ script/source = "extends Camera3D
 var velocityx
 var velocityz
 var speed = 3
+var bossDead = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	bossDead = false
+	speed = 3
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	#smoother camera movement
-	var distance = Vector3(player.position.x - position.x,0,player.position.z - position.z + 15)
-	var velocity = Vector3(distance.x * speed, 0, distance.z * speed)
-	position += Vector3(velocity.x * delta, 0, velocity.z * delta)
-	position.x = clamp(position.x,-18,18)
-	position.z = clamp(position.z,-25,25)
-	look_at($\"../Player\".position)
+	if !bossDead:
+		var distance = Vector3(player.position.x - position.x,0,player.position.z - position.z + 15)
+		var velocity = Vector3(distance.x * speed, 0, distance.z * speed)
+		position += Vector3(velocity.x * delta, 0, velocity.z * delta)
+		position.x = clamp(position.x,-18,18)
+		position.z = clamp(position.z,-25,25)
+		look_at($\"../Player\".position)
+	else:
+		speed -= 0.1*delta
+		var distance = Vector3(player.position.x - position.x,player.position.y - position.y + 3,player.position.z - position.z + 10)
+		var velocity = Vector3(distance.x * speed, distance.y * speed, distance.z * speed)
+		position += Vector3(velocity.x * delta, velocity.y * delta, velocity.z * delta)
+		position.x = clamp(position.x,-18,18)
+		position.z = clamp(position.z,-25,25)
+		fov -= speed * delta
+		look_at($\"../Player\".position)
 	pass
 "
 
