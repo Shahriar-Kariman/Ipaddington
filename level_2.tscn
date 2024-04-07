@@ -263,6 +263,7 @@ volume_db = -15.0
 
 [connection signal="playerDead" from="Player" to="." method="_on_player_player_dead"]
 [connection signal="playerHit" from="Player" to="UserInterface/PlayerHealth" method="on_player_hit"]
+[connection signal="playerLifeLost" from="Player" to="." method="_on_player_player_life_lost"]
 [connection signal="playerLifeLost" from="Player" to="UserInterface/PlayerLives" method="_on_player_health_life_lost"]
 [connection signal="playerShoot" from="Player" to="UserInterface/BulletLabel" method="playerShoot"]
 [connection signal="enemySniperDead" from="EnemySniper" to="." method="on_sniper_dead"]

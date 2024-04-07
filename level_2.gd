@@ -64,3 +64,7 @@ func _on_boss_death_finished():
 
 func _on_player_player_dead(player):
 	get_tree().change_scene_to_file("res://level_1.tscn")
+
+
+func _on_player_player_life_lost(player, lives):
+	$Player.position = Vector3(0,0,0)
