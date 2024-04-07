@@ -9,7 +9,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	text = "Pickups Left: %s" % (PICKUPS_TO_WIN-pickupsCaught)
+	text = "Nuggets Left: %s" % (PICKUPS_TO_WIN-pickupsCaught)
 	if pickupsCaught == PICKUPS_TO_WIN:
 		level1Won.emit()
 		get_tree().change_scene_to_file("res://level_2.tscn")
